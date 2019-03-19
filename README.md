@@ -4,31 +4,31 @@ Pour éditer ce fichier, utiliser le language Markdown
 ## Projet
 Pour éditer ce fichier, utiliser le language Markdown
 
-#Présentation
-##Le contexte
+# Présentation
+## Le contexte
 Dans le cadre du projet de fin d'année de la licence pro SISW. Nous devons réaliser un site web pour une association.
 Nous avons choisi l'association Etoile de Villecresnes, qui est une association sportive regroupant plusieurs sports (Gymnastique Artistique, Trampoline, Zumba mais aussi de la gym adaptée au plus petit).
 
-##Les fonctionnalités
+## Les fonctionnalités
 
-###Fil d' actualité
+### Fil d' actualité
 - Afficher de news de l'association
 
-###Albums
+### Albums
 - Afficher sous forme de dispo différent album
 
-###Le club
+### Le club
 
 - Présentation de l'association (Histoire...)
 - Présentation des disciplines (Horaires, groupes avec photo...etc)
 
 
-###Les inscriptions
+### Les inscriptions
 - L'utilisateur puisse s'inscrire en donnant ses infos personnelles (nom, prénom, numéro...)
 - Lorsque l'inscription est envoyé l'utilisateur est avertie par mail que son inscription est prise en compte.
 - L'adhérent puisse de préinscrire pour l'année à venir avec son numéro de licence
 
-###Les comptes
+### Les comptes
 - Chaque adhérent aura son compte pour consulter son espace personnel
 
 Quelques utilisateurs (les responsables de l'association) pourront avoir d'autres droits comme :
@@ -40,15 +40,15 @@ Quelques utilisateurs (les responsables de l'association) pourront avoir d'autre
 - Gérer les demandes d'inscription
 	- Envoyer un mail en cas de validation ou de refus
 
-###Les utilisateurs
+### Les utilisateurs
 
 - Les adhérents / Parents
 - Le public extérieur
 - Les entraîneurs
 - Les responsables de l'association
 
-###L'application mobile (sous Android)
+### L'application mobile (sous Android)
 
 - Les entraîneurs puissent accéder à leur groupe (info des pratiquants)
 
-###Les technologies
+### Les technologies
