@@ -1,9 +1,6 @@
 ## Projet
 Pour éditer ce fichier, utiliser le language Markdown
 
-## Projet
-Pour éditer ce fichier, utiliser le language Markdown
-
 # Présentation
 ## Le contexte
 Dans le cadre du projet de fin d'année de la licence pro SISW. Nous devons réaliser un site web pour une association.
