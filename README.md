@@ -18,6 +18,7 @@ Nous avons choisi l'association Etoile de Villecresnes, qui est une association 
 
 - Présentation de l'association (Histoire...)
 - Présentation des disciplines (Horaires, groupes avec photo...etc)
+- Présentation des évènements sous forme de calendrier
 
 
 ### Les inscriptions
