@@ -47,6 +47,9 @@ Quelques utilisateurs (les responsables de l'association) pourront avoir d'autre
 
 ### L'application mobile (sous Android)
 
+- Login de chaque utilisateur
 - Les entraîneurs puissent accéder à leur groupe (info des pratiquants)
 
 ### Les technologies
+- Angular (site)
+- Java (android)
