@@ -1,6 +1,23 @@
 ## Projet
 Pour éditer ce fichier, utiliser le language Markdown
 
+
+# Installation
+
+Installer Node.js 10.15 en local
+Vérification installation depuis le terminal win : 
+npm -v
+node -v
+
+Installation angular depuis le terminal : 
+- npm install -g @angular/cli
+
+# Lancer le front de l'application : 
+
+/projet>ng serve --open
+
+Puis l'appli est visible sur localhost:4200
+
 # Présentation
 ## Le contexte
 Dans le cadre du projet de fin d'année de la licence pro SISW. Nous devons réaliser un site web pour une association.
