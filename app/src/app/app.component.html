@@ -25,27 +25,28 @@
   <a routerLink="/heroes">Heroes</a>
 </nav>
 -->
-<body>
-<ul class="menu">
-  <li class="mainnav"><a routerLink="" class="mainnav">Notre Association</a></li>
-  <li class="mainnav"><a routerLink="/actu" class="mainnav">Actualité</a></li>
-  <li class="mainnav"><a routerLink="/disciplines" class="mainnav">Disciplines Proposées</a></li>
-  <li class="mainnav"><a routerLink="/calandrier" class="mainnav">Calandrier</a></li>
-  <li class="mainnav"><a routerLink="/contact" class="mainnav">Contact</a></li>
+<header class="menu">
+<ul>
+  <li class="mainnav"><a routerLink="" class="mainnav"><p>Association</p></a></li>
+  <li class="mainnav"><a routerLink="/actu" class="mainnav"><p>Actualité</p></a></li>
+  <li class="mainnav"><a routerLink="/disciplines" class="mainnav"><p>Disciplines Proposées</p></a></li>
+  <li class="mainnav"><a routerLink="/calandrier" class="mainnav"><p>Calandrier</p></a></li>
+  <li class="mainnav"><a routerLink="/contact" class="mainnav"><p>Contact</p></a></li>
 </ul>
 
-<div class="connect">
+<!--<div class="connect">
   <ul>
     <li><a routerLink="/connexion" class="lien">Se connecter</a></li> <br>
     <li><a routerLink="/inscription" class="lien">S'inscrire</a></li>
 
   </ul>
-</div>
+</div>-->
 <div class="contenu" name="contenu">
   
   </div>
 
-</body>
+  </header>
+
 
 
 <router-outlet></router-outlet>

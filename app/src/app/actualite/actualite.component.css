@@ -1,21 +1,8 @@
-div.contenu {
-    margin-left:10%;
-    margin-right:10%; 
-    margin-bottom:0%;
-    margin-top:0%;
-    background-color: #FF9633;
-   /* width:100%;
-    height:100%; */
-   /* width:100%;*/
-    height:750px;
-    
-   
-  }
-
-  body {
-    background-color: #EEE9B5; 
-    
-    width:100%;
-    height:100%;
-    
-  }
+.actu{
+  display: block;
+  float: left;
+  margin-top:50px;
+  margin-left:5%;
+  width:90%;
+  background-color: red;
+}

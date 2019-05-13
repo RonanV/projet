@@ -1,21 +1,42 @@
-  ul.menu {
+  .menu {
     list-style-type: none;
-   /* margin-left: 10%; */
-   /* margin-right: 10%; */
-    margin-top: 0%; 
-    margin-bottom: 0%;
-    padding: 0;
-   /* width:auto; */
     width:100%; 
-    height:auto;
-    overflow: hidden;
-    background-color: #3733FF;
+    height:100px;
+    background-color: #21AB8B;
+    color:white;
+    margin: 0;
+    float:right;
+    position: relative;
+    display: block;
+  }
 
+  a{
+    height: 100%;
+    display: block;
   }
+
+  p{
+    display:block;
+    position: relative;
+    padding-top:42px;
+    font-size: 17px;
+  }
+
+
   ul {
-    
     list-style-type: none;
+    height: 100%;
+    display: block;
+    position: relative;
+    width:100%;
+    padding:0;
   }
+
+  li{
+    margin-left:4%;
+  }
+
+  
   div.connect {
     float:right; 
   margin-right: 2%; 
@@ -23,27 +44,14 @@
     
   
   }
-  li {
-    float: left;
-    
-  }
-  /*
-  li.mainnav a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  */
+
   .mainnav{
     display: block;
+    float:left;
     color: white;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    height:auto;
-    
+    height:100%;
   }
   a.lien {
     text-decoration: none;
@@ -52,8 +60,10 @@
     text-decoration: underline;
   }
   
-  li.mainnav a:hover {
-    background-color: #FF9633;
+a:hover {
+    height: 96%;
+    border-bottom: 4px solid white;
+
   }
 
   div.contenu {
@@ -61,7 +71,7 @@
     margin-right:10%; 
     margin-bottom:0%;
     margin-top:0%;
-    background-color: #EEE9B5;
+    background-color: #E2EAE8 ;
    /* width:100%;
     height:100%; */
    /* width:100%;*/
@@ -82,7 +92,7 @@
   */
   
   body {
-    background-color: #EEE9B5; 
+    background-color: #FFF; 
     width:100%;
     height:100%;
     margin:0;
