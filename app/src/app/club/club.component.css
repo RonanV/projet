@@ -3,18 +3,11 @@ div.contenu {
     margin-right:10%; 
     margin-bottom:0%;
     margin-top:0%;
-    background-color: #CFD3D2  ;
-   /* width:100%;
-    height:100%; */
-   /* width:100%;*/
-    height:750px;
-    
-   
+    background-color: #CFD3D2  ;   
   }
 
   body {
     background-color: #E2EAE8 ; 
-    
     width:100%;
     height:100%;
     
