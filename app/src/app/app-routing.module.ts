@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClubComponent } from './club/club.component';
-import { ActualiteComponent } from './actualite/actualite.component';
+import { ClubComponent } from './component/club/club.component';
+import { ActualiteComponent } from './component/actualite/actualite.component';
 
 const routes: Routes = [
   //{ path: 'club', component: ClubComponent }
-  { path: '', component: ClubComponent },
-  { path: 'actu', component: ActualiteComponent }
+  { path: '', component: ActualiteComponent },
+  { path: 'association', component: ClubComponent }
 ];
 
 @NgModule({

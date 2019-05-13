@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClubComponent } from './club/club.component';
-import { ActualiteComponent } from './actualite/actualite.component';
+import { ClubComponent } from './component/club/club.component';
+import { ActualiteComponent } from './component/actualite/actualite.component';
 
 @NgModule({
   declarations: [
