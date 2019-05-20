@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-actualite',
   templateUrl: './actualite.component.html',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualiteComponent implements OnInit {
 
+  public text:any;
+
+
   constructor() { }
 
   ngOnInit() {
+   
   }
+
+
+
+  
 
 }

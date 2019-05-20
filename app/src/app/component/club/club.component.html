@@ -1,14 +1,15 @@
 <div class="contenu">
   
   <ul>
-    <li><a href="#asso"><p>Présentation de l'association</p></a></li>
-    <li><a href="#bureau"><p>Le bureau</p></a></li>
+    <li><a ng-href="display('asso')"><p>Présentation de l'association</p></a></li>
+    <li><a ng-href="display('bureau')"><p>Le bureau</p></a></li>
     <li><a href="#entraineur"><p>Les entraîneurs</p></a></li>
     <li><a href="#juge"><p>Les juges</p></a></li>
     <li><a href="#groupe"><p>Les groupes</p></a></li>
     <li><a href="#tenues"><p>Les tenues</p></a></li>
   </ul>
 
+  <ng-container *ngIf="asso">
   <div class="asso">
     <img src="http://gymvillecresnes.free.fr/photos/presentation/histoire2.jpg">
     <p class="asso_text">
@@ -28,5 +29,38 @@
       Nos monitrices et moniteurs sont titulaires du Brevet d’Etat d’Educateur Sportif ou d’un brevet fédéral. Ils sont assistés d’aide-monitrices et d’aide-moniteurs bénévoles.
     </p>
   </div>
+  </ng-container>
+
+  <ng-container *ngIf="bureau">
+  <div class="bureau" ng-hide="bureau">
+    BUREAU
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="entraineur">
+  <div class="entraineur">
+    ENTRAINEUR
+  </div>
+</ng-container>
+
+  <ng-container *ngIf="juge">
+  <div class="juge">
+    JUGE
+  </div>
+</ng-container>
+
+  <ng-container *ngIf="groupe">
+  <div class="groupe">
+    GROUPE
+  </div>
+</ng-container>
+
+  <ng-container *ngIf="tenu">
+  <div class="tenu">
+    TENUS
+  </div>
+</ng-container>
+
+
 
   </div>
