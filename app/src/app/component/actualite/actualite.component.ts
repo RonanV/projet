@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from '../../service/article';
+import { ArticleServiceService } from '../../service/article-service.service' 
+
 
 
 @Component({
@@ -8,13 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualiteComponent implements OnInit {
 
-  public text:any;
+  article: Article[];
 
-
-  constructor() { }
+  constructor(private ArticleService: ArticleServiceService) { }
 
   ngOnInit() {
-   
+   this.ArticleService.findAll().subscribe(data =>{
+     this.article = data;
+   });
+   console.log(this.article);
   }
 
 

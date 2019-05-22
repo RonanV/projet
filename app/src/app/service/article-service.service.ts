@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Article } from './article';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ArticleServiceService {
+
+  private urlArticle: string;
+
+  constructor(private http: HttpClient) { 
+    this.urlArticle = 'http://localhost:8080/articles/all'
+  }
+
+  public findAll(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.urlArticle);
+  }
+
+  public save(article: Article){
+    return this.http.post<Article>(this.urlArticle, article);
+  }
+}
