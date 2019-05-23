@@ -40,6 +40,42 @@ export class ClubComponent implements OnInit {
       this.groupe = false;
       this.tenu = false;
     }
+
+    if(name=="entraineur"){
+      this.asso = false;
+      this.bureau = false;
+      this.entraineur = true;
+      this.juge = false;
+      this.groupe = false;
+      this.tenu = false;
+    }
+
+    if(name=="juge"){
+      this.asso = false;
+      this.bureau = false;
+      this.entraineur = false;
+      this.juge = true;
+      this.groupe = false;
+      this.tenu = false;
+    }
+
+    if(name=="groupe"){
+      this.asso = false;
+      this.bureau = false;
+      this.entraineur = false;
+      this.juge = false;
+      this.groupe = true;
+      this.tenu = false;
+    }
+
+    if(name=="tenue"){
+      this.asso = false;
+      this.bureau = false;
+      this.entraineur = false;
+      this.juge = false;
+      this.groupe = false;
+      this.tenu = true;
+    }
   }
 
 }

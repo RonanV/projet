@@ -18,23 +18,28 @@ div.contenu {
   ul{
     display:block;
     float:left;
-    width:100%;
+    width:96%;
     text-decoration: none;
     list-style-type: none;
     background-color: #828282;
-    height:30px;
+    height:50px;
+    
   }
 
   li{
     display:block;
+    align-items: center;
     float:left;
-    margin-right: 50px;
     text-align: center;
     color:white;
+    width:16%;
+    height: 100%;
   }
 
   p{
-    padding-top: 5px;
+    vertical-align: middle;
+    height:95%;
+    padding-top:5%;
   }
 
   a{
@@ -46,7 +51,7 @@ div.contenu {
 
   a:hover{
     height: 99%;
-    border-bottom: 2px solid white;
+    border-bottom: 3px solid white;
   }
 
   .asso img {

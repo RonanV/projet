@@ -1,32 +1,32 @@
 <div class="contenu">
   
   <ul>
-    <li><a ng-href="display('asso')"><p>Présentation de l'association</p></a></li>
-    <li><a ng-href="display('bureau')"><p>Le bureau</p></a></li>
-    <li><a href="#entraineur"><p>Les entraîneurs</p></a></li>
-    <li><a href="#juge"><p>Les juges</p></a></li>
-    <li><a href="#groupe"><p>Les groupes</p></a></li>
-    <li><a href="#tenues"><p>Les tenues</p></a></li>
+    <li><a (click)="display('asso')"><p alt="block" style="vertical-align: middle;">Présentation de l'association</p></a></li>
+    <li><a (click)="display('bureau')"><p>Bureau</p></a></li>
+    <li><a (click)="display('entraineur')"><p>Les entraîneurs</p></a></li>
+    <li><a (click)="display('juge')"><p>Les juges</p></a></li>
+    <li><a (click)="display('groupe')"><p>Les groupes</p></a></li>
+    <li><a (click)="display('tenue')"><p>Les tenues</p></a></li>
   </ul>
 
   <ng-container *ngIf="asso">
   <div class="asso">
     <img src="http://gymvillecresnes.free.fr/photos/presentation/histoire2.jpg">
     <p class="asso_text">
-      L’Etoile de Villecresnes a été fondée en 1954. C’est la plus ancienne association sportive villecresnoise encore en activité. A l’origine, les cours se déroulaient au gymnase de la Ferme, dans la "Salle des Pompiers", puis nos activités se sont déplacées à la Salle polyvalente. En 1989, nous nous sommes installés à la Halle des Sports Didier Pironi, rue du Réveillon (près du collège).
-
-      Nous y accueillons filles et garçons : 
-      
-      - de 15 mois à 2 ans, dans la section "éveil gymnique" pour des séances de motricité avec leurs parents 
-      - Entre 3 et 4 ans, pour leur faire pratiquer la Baby-gym où ils commencent à s’équilibrer, courir, sauter, ramper, rouler, grimper, … etc. 
-      - Dès 5 ans, filles et garçons peuvent s’essayer à la "vraie" gymnastique et au trampoline dans les groupes "Ecole de Gym" et "Ecole de Trampoline". 
-      - A partir de 6 ou 7 ans commencent les compétitions pour les gymnastes comme pour les trampolinistes, qui suivent alors 2 entraînements par semaine.
-      
-      Nous proposons également aux adultes des cours de step/fitness.
-      
-      Nous sommes affiliés à l’UFOLEP (Union Française des Œuvres Laïques d’Education Physique) dont nous partageons les valeurs et la conception d’un sport moyen d’éducation et de formation. Chez nous, pas de "championnite", même si nous participons aux compétitions de notre fédération, du niveau départemental jusqu’aux finales nationales.
-      
-      Nos monitrices et moniteurs sont titulaires du Brevet d’Etat d’Educateur Sportif ou d’un brevet fédéral. Ils sont assistés d’aide-monitrices et d’aide-moniteurs bénévoles.
+      L’Etoile de Villecresnes a été fondée en 1954. C’est la plus ancienne association sportive villecresnoise encore en activité. A l’origine, les cours se déroulaient au gymnase de la Ferme, dans la "Salle des Pompiers", puis nos activités se sont déplacées à la Salle polyvalente. En 1989, nous nous sommes installés à la Halle des Sports Didier Pironi, rue du Réveillon (près du collège).<br>
+      <br>
+      Nous y accueillons filles et garçons : <br>
+      <br>
+      - de 15 mois à 2 ans, dans la section "éveil gymnique" pour des séances de motricité avec leurs parents <br>
+      - Entre 3 et 4 ans, pour leur faire pratiquer la Baby-gym où ils commencent à s’équilibrer, courir, sauter, ramper, rouler, grimper, … etc. <br>
+      - Dès 5 ans, filles et garçons peuvent s’essayer à la "vraie" gymnastique et au trampoline dans les groupes "Ecole de Gym" et "Ecole de Trampoline". <br>
+      - A partir de 6 ou 7 ans commencent les compétitions pour les gymnastes comme pour les trampolinistes, qui suivent alors 2 entraînements par semaine.<br>
+      <br>
+      Nous proposons également aux adultes des cours de step/fitness.<br>
+      <br>
+      Nous sommes affiliés à l’UFOLEP (Union Française des Œuvres Laïques d’Education Physique) dont nous partageons les valeurs et la conception d’un sport moyen d’éducation et de formation. Chez nous, pas de "championnite", même si nous participons aux compétitions de notre fédération, du niveau départemental jusqu’aux finales nationales.<br>
+      <br>
+      Nos monitrices et moniteurs sont titulaires du Brevet d’Etat d’Educateur Sportif ou d’un brevet fédéral. Ils sont assistés d’aide-monitrices et d’aide-moniteurs bénévoles.<br>
     </p>
   </div>
   </ng-container>

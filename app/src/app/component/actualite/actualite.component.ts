@@ -10,8 +10,7 @@ import { ArticleServiceService } from '../../service/article-service.service'
   styleUrls: ['./actualite.component.css']
 })
 export class ActualiteComponent implements OnInit {
-
-  article: Article[];
+  article : Array<Article> = [];
 
   constructor(private ArticleService: ArticleServiceService) { }
 
@@ -19,7 +18,7 @@ export class ActualiteComponent implements OnInit {
    this.ArticleService.findAll().subscribe(data =>{
      this.article = data;
    });
-   console.log(this.article);
+   
   }
 
 
