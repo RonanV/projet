@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../../service/article';
+import { Article } from '../../models/article';
 import { ArticleServiceService } from '../../service/article-service.service' 
 
 
@@ -10,13 +10,15 @@ import { ArticleServiceService } from '../../service/article-service.service'
   styleUrls: ['./actualite.component.css']
 })
 export class ActualiteComponent implements OnInit {
-  article : Array<Article> = [];
+  
+  articles : Article[];
 
   constructor(private ArticleService: ArticleServiceService) { }
 
   ngOnInit() {
    this.ArticleService.findAll().subscribe(data =>{
-     this.article = data;
+     this.articles = data;
+     console.log(data);
    });
    
   }

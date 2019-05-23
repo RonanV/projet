@@ -2,7 +2,7 @@ div.contenu {
     margin-left:10%;
     margin-bottom:0%;
     margin-top:0%;
-    background-color: #CFD3D2  ;   
+    background-color: #E4E4E4  ;   
     display:block;
     float:left;
     width:80%;
@@ -50,8 +50,8 @@ div.contenu {
   }
 
   a:hover{
-    height: 99%;
-    border-bottom: 3px solid white;
+    height: 95%;
+    border-bottom: 4px solid #21AB8B;
   }
 
   .asso img {
@@ -60,7 +60,7 @@ div.contenu {
     margin-top:2%;
   }
 
-  .asso_text{
+  .asso_text, .presentation_bureau{
     display: block;
     float:left;
     position: relative;
@@ -69,3 +69,53 @@ div.contenu {
     margin-bottom: 5%;
     font-size: 20px;
   }
+
+  .presentation_bureau{
+    margin-top:5%;
+  }
+
+  .membre_bureau, .membre_comite{
+    display:block;
+    float:left;
+    width:42%;
+    margin-left:5%;
+    margin-bottom:5%;
+  }
+
+  .titre, h3{
+    text-align: center;
+  }
+
+  .personne{
+    display:block;
+    float:left;
+    width:90%;
+    margin-left:5%;
+    height:100px;
+    margin-top:5%;
+  }
+
+  .personne img, .part_entraineur img{
+    float:left;
+    height:90%;
+  }
+
+  .personne p, .part_entraineur p{
+    float:left;
+    margin-left:5%;
+    padding-top:0;
+  }
+
+  .part_entraineur, .part_groupe{
+    display:block;
+    float:left;
+    width:22%;
+    margin-left:2%;
+  }
+
+  .part_groupe img{
+    width:90%;
+    margin-left:5%;
+  }
+
+  
