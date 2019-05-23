@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.articles;
+import com.example.demo.model.users;
+import com.example.demo.repository.ArticlesRepository;
+import com.example.demo.repository.UsersRepository;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
