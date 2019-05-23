@@ -12,49 +12,49 @@ public class Articles {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	private String description;
-	private String titre;
-	private Date date;
-	private String auteur;
-	private String image;
+	private Integer idarticle;
+	private String texte_article;
+	private String titre_article;
+	private Date date_article;
+	private String id_personne;
+	private String photo_idphoto;
+	public Integer getIdarticle() {
+		return idarticle;
+	}
+	public void setIdarticle(Integer idarticle) {
+		this.idarticle = idarticle;
+	}
+	public String getTexte_article() {
+		return texte_article;
+	}
+	public void setTexte_article(String texte_article) {
+		this.texte_article = texte_article;
+	}
+	public String getTitre_article() {
+		return titre_article;
+	}
+	public void setTitre_article(String titre_article) {
+		this.titre_article = titre_article;
+	}
+	public Date getDate_article() {
+		return date_article;
+	}
+	public void setDate_article(Date date_article) {
+		this.date_article = date_article;
+	}
+	public String getId_personne() {
+		return id_personne;
+	}
+	public void setId_personne(String id_personne) {
+		this.id_personne = id_personne;
+	}
+	public String getPhoto_idphoto() {
+		return photo_idphoto;
+	}
+	public void setPhoto_idphoto(String photo_idphoto) {
+		this.photo_idphoto = photo_idphoto;
+	}
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getTitre() {
-		return titre;
-	}
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public String getAuteur() {
-		return auteur;
-	}
-	public void setAuteur(String auteur) {
-		this.auteur = auteur;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	
 	
 }
