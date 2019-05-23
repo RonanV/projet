@@ -1,4 +1,5 @@
-package com.example.demo.model;
+package com.example.apispring.model;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class articles {
+public class Articles {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
