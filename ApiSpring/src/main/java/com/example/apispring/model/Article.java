@@ -8,16 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Articles {
+public class Article {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idarticle;
 	private String texte_article;
 	private String titre_article;
-	private Date date_article;
-	private String id_personne;
+	private String date_article;
+	private String idpersonne;
 	private String photo_idphoto;
+
+
 	public Integer getIdarticle() {
 		return idarticle;
 	}
@@ -36,17 +38,17 @@ public class Articles {
 	public void setTitre_article(String titre_article) {
 		this.titre_article = titre_article;
 	}
-	public Date getDate_article() {
+	public String getDate_article() {
 		return date_article;
 	}
-	public void setDate_article(Date date_article) {
+	public void setDate_article(String date_article) {
 		this.date_article = date_article;
 	}
-	public String getId_personne() {
-		return id_personne;
+	public String getIdpersonne() {
+		return idpersonne;
 	}
-	public void setId_personne(String id_personne) {
-		this.id_personne = id_personne;
+	public void setIdpersonne(String idpersonne) {
+		this.idpersonne = idpersonne;
 	}
 	public String getPhoto_idphoto() {
 		return photo_idphoto;

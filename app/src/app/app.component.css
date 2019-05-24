@@ -12,40 +12,74 @@
 
   a{
     height: 100%;
+    width:100%;
     display: block;
   }
 
-  p{
+  .nav p{
     display:block;
     position: relative;
     padding-top:42px;
     font-size: 17px;
   }
 
+  .titre p{
+    padding-top:42px;
+  }
 
-  ul {
+  .titre{
+    list-style-type: none;
+    display:block;
+    float:left;
+    position: relative;
+    width:20%;
+    text-decoration: none;
+    color:white;
+    margin-left:5%;
+    text-align: center;
+    font-size:22px;
+    height: 100%;
+  }
+
+
+  .nav {
     list-style-type: none;
     height: 100%;
+    float:left;
     display: block;
     position: relative;
-    width:100%;
+    width:75%;
     padding:0;
+    position:relative;
   }
 
-  li{
-    margin-left:4%;
+  .connect ul{
+    margin-top:20%;
+    list-style-type: none;
+  }
+
+  .connect a{
+    text-decoration: none;
+    color:white;
+  }
+
+  .nav li{
+    width:15%;
+    margin-left:2%;
   }
 
   
-  div.connect {
+  .connect {
     float:right; 
-  margin-right: 2%; 
+     margin-right: 2%; 
     width:auto;
-    
-  
+    display:block;
+    position:relative;
+
+    width:20%;
   }
 
-  .mainnav{
+  .mainnav, .mainnav2{
     display: block;
     float:left;
     color: white;
@@ -53,43 +87,15 @@
     text-decoration: none;
     height:100%;
   }
-  a.lien {
-    text-decoration: none;
+
+  .mainnav2{
+    float:right;
   }
-  a.lien:hover {
-    text-decoration: underline;
-  }
-  
-a:hover {
+
+  .nav a:hover ,.titre:hover{
     height: 96%;
     border-bottom: 4px solid white;
-
   }
-
-  div.contenu {
-    margin-left:10%;
-    margin-right:10%; 
-    margin-bottom:0%;
-    margin-top:0%;
-    background-color: #E2EAE8 ;
-   /* width:100%;
-    height:100%; */
-   /* width:100%;*/
-    height:750px;
-    
-   
-  }
-  a.lien {
-    color:#21AB8B;
-    
-  }
-/*
-  #bloc {
-    margin:10%;
-    background-color: #65A94B;
-
-  }
-  */
   
   body {
     background-color: #FFF; 
@@ -105,7 +111,6 @@ a:hover {
     width:100%;
     height:55px;
     background-color:#21AB8B;
-    margin-top:20px;
     text-align:center;
     color: white;
   }
@@ -122,5 +127,3 @@ div.contenu {
   position: relative;
   width:80%;
 }
- 
-

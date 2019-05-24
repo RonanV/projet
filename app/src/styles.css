@@ -4,4 +4,26 @@ body, ul, p{
 }
 body{
 background-color: #FAFAFA;
+font-family: "LGC", Arial, sans-serif;
+}
+
+@font-face {
+    font-family: "LGC";
+    font-style:italic; 
+    font-weight: bold;
+	src: url('app/font/Louis_George_Cafe_Bold_Italic.ttf');
+}
+@font-face {
+	font-family: "LGB";
+	src: url('app/font/Louis_George_Cafe.ttf');
+}
+@font-face {
+	font-family: "LGB";
+	font-weight: bold;
+	src: url('app/font/Louis_George_Cafe_Bold.ttf');
+}
+@font-face {
+	font-family: "LGB";
+	font-style: italic;
+	src: url('./app/font/Louis_George_Cafe_Italic.ttf');
 }

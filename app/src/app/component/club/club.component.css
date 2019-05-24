@@ -95,6 +95,19 @@ div.contenu {
     margin-top:5%;
   }
 
+  .personne_e{
+    display:block;
+    float:left;
+    width:90%;
+    margin-left:5%;
+    margin-top:5%;
+  }
+
+  .personne_e img{
+    width:90%;
+    margin-left:5%;
+  }
+
   .personne img, .part_entraineur img{
     float:left;
     height:90%;
