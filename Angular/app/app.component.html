@@ -1,3 +1,4 @@
+
 <!--The content below is only a placeholder and can be replaced.-->
 <!--
 <div style="text-align:center">
@@ -18,32 +19,34 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
+
 <nav>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a>
 </nav>
 -->
 <body>
-  <ul class="menu">
-    <li class="mainnav"><a routerLink="" class="mainnav">Notre Association</a></li>
-    <li class="mainnav"><a routerLink="/actu" class="mainnav">Actualité</a></li>
-    <li class="mainnav"><a routerLink="/disciplines" class="mainnav">Disciplines Proposées</a></li>
-    <li class="mainnav"><a routerLink="/calandrier" class="mainnav">Calandrier</a></li>
-    <li class="mainnav"><a routerLink="/contact" class="mainnav">Contact</a></li>
+<ul class="menu">
+  <li class="mainnav"><a routerLink="" class="mainnav">Notre Association</a></li>
+  <li class="mainnav"><a routerLink="/actu" class="mainnav">Actualité</a></li>
+  <li class="mainnav"><a routerLink="/disciplines" class="mainnav">Disciplines Proposées</a></li>
+  <li class="mainnav"><a routerLink="/calandrier" class="mainnav">Calandrier</a></li>
+  <li class="mainnav"><a routerLink="/contact" class="mainnav">Contact</a></li>
+</ul>
+
+<div class="connect">
+  <ul>
+    <li><a routerLink="/connexion" class="lien">Se connecter</a></li> <br>
+    <li><a routerLink="/inscription" class="lien">S'inscrire</a></li>
+
   </ul>
+</div>
+<div class="contenu" name="contenu">
   
-  <div class="connect">
-    <ul>
-      <li><a routerLink="/connexion" class="lien">Se connecter</a></li> <br>
-      <li><a routerLink="/inscription" class="lien">S'inscrire</a></li>
-  
-    </ul>
   </div>
-  <div class="contenu" name="contenu">
-    
-    </div>
-  
-  </body>
-  
-  
-  <router-outlet></router-outlet>
+
+</body>
+
+
+<router-outlet></router-outlet>
+
