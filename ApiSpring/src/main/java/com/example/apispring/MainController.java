@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.apispring.model.Article;
 import com.example.apispring.repository.ArticleRepository;
 
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path= "/")

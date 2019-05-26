@@ -3,9 +3,15 @@ package com.example.apispring.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Article {
@@ -16,7 +22,10 @@ public class Article {
 	private String texte_article;
 	private String titre_article;
 	private String date_article;
-	private String idpersonne;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idpersonne", insertable = false, updatable = false)
+	@Fetch(FetchMode.JOIN)
+	private Personne idpersonne;
 	private String photo_idphoto;
 
 
@@ -44,10 +53,10 @@ public class Article {
 	public void setDate_article(String date_article) {
 		this.date_article = date_article;
 	}
-	public String getIdpersonne() {
+	public Personne getIdpersonne() {
 		return idpersonne;
 	}
-	public void setIdpersonne(String idpersonne) {
+	public void setIdpersonne(Personne idpersonne) {
 		this.idpersonne = idpersonne;
 	}
 	public String getPhoto_idphoto() {
