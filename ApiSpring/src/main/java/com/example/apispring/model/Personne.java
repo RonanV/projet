@@ -1,9 +1,12 @@
 package com.example.apispring.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Personne {
@@ -22,6 +25,10 @@ public class Personne {
 	private String telephonemere;
 	private String datenaissance_Personne;
 	private String numlicence;
+	@ManyToMany
+	private Collection<Droit> droit;
+	@ManyToMany
+	private Collection<Tache> tache;
 	
 	
 	public Integer getIdpersonne() {
