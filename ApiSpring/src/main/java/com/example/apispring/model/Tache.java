@@ -29,6 +29,13 @@ public class Tache {
 	public void setLibelletache(String libelletache) {
 		this.libelletache = libelletache;
 	}
+	public Collection<Personne> getPersonne() {
+		return personne;
+	}
+	public void setPersonne(Collection<Personne> personne) {
+		this.personne = personne;
+	}
+	
 	
 	
 }

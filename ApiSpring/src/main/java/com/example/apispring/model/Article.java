@@ -1,5 +1,7 @@
 package com.example.apispring.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ public class Article {
 	private Integer idarticle;
 	private String texte_article;
 	private String titre_article;
-	private String date_article;
+	private Date date_article;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idpersonne", insertable = false, updatable = false)
 	@Fetch(FetchMode.JOIN)
@@ -48,10 +50,10 @@ public class Article {
 	public void setTitre_article(String titre_article) {
 		this.titre_article = titre_article;
 	}
-	public String getDate_article() {
+	public Date getDate_article() {
 		return date_article;
 	}
-	public void setDate_article(String date_article) {
+	public void setDate_article(Date date_article) {
 		this.date_article = date_article;
 	}
 	public Personne getIdpersonne() {
@@ -60,10 +62,10 @@ public class Article {
 	public void setIdpersonne(Personne idpersonne) {
 		this.idpersonne = idpersonne;
 	}
-	public Photo getPhoto_idphoto() {
+	public Photo getIdphoto() {
 		return idphoto;
 	}
-	public void setPhoto_idphoto(Photo idphoto) {
+	public void setIdphoto(Photo idphoto) {
 		this.idphoto = idphoto;
 	}
 	

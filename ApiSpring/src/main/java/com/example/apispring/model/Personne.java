@@ -1,6 +1,7 @@
 package com.example.apispring.model;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Personne {
 	private String email_Personne;
 	private String telephonepere;
 	private String telephonemere;
-	private String datenaissance_Personne;
+	private Date datenaissance_Personne;
 	private String numlicence;
 	@ManyToMany
 	private Collection<Droit> droit;
@@ -91,10 +92,10 @@ public class Personne {
 	public void setTelephonemere(String telephonemere) {
 		this.telephonemere = telephonemere;
 	}
-	public String getDatenaissance_Personne() {
+	public Date getDatenaissance_Personne() {
 		return datenaissance_Personne;
 	}
-	public void setDatenaissance_Personne(String datenaissance_Personne) {
+	public void setDatenaissance_Personne(Date datenaissance_Personne) {
 		this.datenaissance_Personne = datenaissance_Personne;
 	}
 	public String getNumlicence() {
@@ -102,6 +103,18 @@ public class Personne {
 	}
 	public void setNumlicence(String numlicence) {
 		this.numlicence = numlicence;
+	}
+	public Collection<Droit> getDroit() {
+		return droit;
+	}
+	public void setDroit(Collection<Droit> droit) {
+		this.droit = droit;
+	}
+	public Collection<Tache> getTache() {
+		return tache;
+	}
+	public void setTache(Collection<Tache> tache) {
+		this.tache = tache;
 	}
 	
 	

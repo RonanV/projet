@@ -20,6 +20,7 @@ public class Album {
 	private Date date_Album;
 	@ManyToMany
 	private Collection<Photo> photo;
+	
 	public Integer getIdalbum() {
 		return idalbum;
 	}
@@ -43,6 +44,12 @@ public class Album {
 	}
 	public void setDate_Album(Date date_Album) {
 		this.date_Album = date_Album;
+	}
+	public Collection<Photo> getPhoto() {
+		return photo;
+	}
+	public void setPhoto(Collection<Photo> photo) {
+		this.photo = photo;
 	}
 	
 	

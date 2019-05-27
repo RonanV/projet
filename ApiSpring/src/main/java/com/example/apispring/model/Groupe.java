@@ -62,10 +62,17 @@ public class Groupe {
 	public void setTarif_Groupe(String tarif_Groupe) {
 		this.tarif_Groupe = tarif_Groupe;
 	}
-	public Photo getidphoto() {
+	public Photo getIdphoto() {
 		return idphoto;
 	}
-	public void setidphoto(Photo idphoto) {
+	public void setIdphoto(Photo idphoto) {
 		this.idphoto = idphoto;
 	}
+	public Collection<Horaire> getHoraires() {
+		return horaires;
+	}
+	public void setHoraires(Collection<Horaire> horaires) {
+		this.horaires = horaires;
+	}
+	
 }

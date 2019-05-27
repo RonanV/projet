@@ -29,6 +29,12 @@ public class Droit {
 	public void setLibelledroit(String libelledroit) {
 		this.libelledroit = libelledroit;
 	}
+	public Collection<Personne> getPersonne() {
+		return personne;
+	}
+	public void setPersonne(Collection<Personne> personne) {
+		this.personne = personne;
+	}
 	
 	
 	

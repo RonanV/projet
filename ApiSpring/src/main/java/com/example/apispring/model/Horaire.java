@@ -50,6 +50,12 @@ public class Horaire {
 	public void setHeurefin(String heurefin) {
 		this.heurefin = heurefin;
 	}
+	public Collection<Groupe> getGroupe() {
+		return groupe;
+	}
+	public void setGroupe(Collection<Groupe> groupe) {
+		this.groupe = groupe;
+	}
 	
 	
 }

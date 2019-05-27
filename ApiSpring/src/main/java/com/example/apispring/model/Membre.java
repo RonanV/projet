@@ -24,5 +24,25 @@ public class Membre {
 	@JoinColumn(name = "idgroupe", insertable = false, updatable = false)
 	@Fetch(FetchMode.JOIN)
 	private Groupe idgroupe;
+	public Integer getIdmembre() {
+		return idmembre;
+	}
+	public void setIdmembre(Integer idmembre) {
+		this.idmembre = idmembre;
+	}
+	public Personne getIdpersonne() {
+		return idpersonne;
+	}
+	public void setIdpersonne(Personne idpersonne) {
+		this.idpersonne = idpersonne;
+	}
+	public Groupe getIdgroupe() {
+		return idgroupe;
+	}
+	public void setIdgroupe(Groupe idgroupe) {
+		this.idgroupe = idgroupe;
+	}
+	
+	
 	
 }

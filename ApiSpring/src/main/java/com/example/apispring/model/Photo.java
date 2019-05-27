@@ -39,11 +39,17 @@ public class Photo {
 	public void setChemin_Photo(String chemin_Photo) {
 		this.chemin_Photo = chemin_Photo;
 	}
-	public Groupe getGroupe_idgroupe() {
+	public Groupe getIdgroupe() {
 		return idgroupe;
 	}
-	public void setGroupe_idgroupe(Groupe idgroupe) {
+	public void setIdgroupe(Groupe idgroupe) {
 		this.idgroupe = idgroupe;
+	}
+	public Collection<Album> getAlbum() {
+		return album;
+	}
+	public void setAlbum(Collection<Album> album) {
+		this.album = album;
 	}
 	
 	

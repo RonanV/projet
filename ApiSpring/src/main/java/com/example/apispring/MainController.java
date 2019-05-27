@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,15 @@ public class MainController {
 	
 	@Autowired
 	private ArticleRepository articleRepository;
+	
+	@GetMapping(path="/articles/add")
+	public @ResponseBody String addNewArticle () {
+		Article n = new Article();
+		n.setTexte_article("Bonjour");
+		n.setTitre_article("c'est moi");
+		articleRepository.save(n);
+		return "Saved";
+	}
 	
 	@GetMapping(path="/articles/all")
 	public @ResponseBody Iterable<Article> getAllUsers() {
