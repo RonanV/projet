@@ -1,6 +1,6 @@
 package com.example.apispring.model;
 
-import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +18,8 @@ public class Horaire {
 	private String jour_horaire;
 	private String heuredebut;
 	private String heurefin;
-	@ManyToMany
-	private Collection<Groupe> groupe;
+	@ManyToMany(mappedBy="horaire")
+	private Set<Groupe> groupe;
 	public Integer getIdhoraire() {
 		return idhoraire;
 	}
@@ -50,10 +50,10 @@ public class Horaire {
 	public void setHeurefin(String heurefin) {
 		this.heurefin = heurefin;
 	}
-	public Collection<Groupe> getGroupe() {
+	public Set<Groupe> getGroupe() {
 		return groupe;
 	}
-	public void setGroupe(Collection<Groupe> groupe) {
+	public void setGroupe(Set<Groupe> groupe) {
 		this.groupe = groupe;
 	}
 	

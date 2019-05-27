@@ -1,13 +1,15 @@
 package com.example.apispring.model;
 
-import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -29,8 +31,11 @@ public class Groupe {
 	@Fetch(FetchMode.JOIN)
 	private Photo idphoto;
 	
-	@ManyToMany
-	private Collection<Horaire> horaires;
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="groupe_horaire",
+				joinColumns= {@JoinColumn(name="idgroupe")},
+				inverseJoinColumns= {@JoinColumn(name="idhoraire")})
+	private Set<Horaire> horaire;
 	
 	public Integer getIdgroupe() {
 		return idgroupe;
@@ -68,11 +73,11 @@ public class Groupe {
 	public void setIdphoto(Photo idphoto) {
 		this.idphoto = idphoto;
 	}
-	public Collection<Horaire> getHoraires() {
-		return horaires;
+	public Set<Horaire> getHoraires() {
+		return horaire;
 	}
-	public void setHoraires(Collection<Horaire> horaires) {
-		this.horaires = horaires;
+	public void setHoraires(Set<Horaire> horaire) {
+		this.horaire = horaire;
 	}
 	
 }

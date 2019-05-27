@@ -1,6 +1,7 @@
 package com.example.apispring.model;
 
-import java.util.Collection;
+
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +26,8 @@ public class Photo {
 	@JoinColumn(name = "idgroupe", insertable = false, updatable = false)
 	@Fetch(FetchMode.JOIN)
 	private Groupe idgroupe;
-	@ManyToMany
-	private Collection<Album> album;
+	@ManyToMany(mappedBy="photo")
+	private Set<Album> album;
 	public Integer getIdphoto() {
 		return idphoto;
 	}
@@ -45,10 +46,10 @@ public class Photo {
 	public void setIdgroupe(Groupe idgroupe) {
 		this.idgroupe = idgroupe;
 	}
-	public Collection<Album> getAlbum() {
+	public Set<Album> getAlbum() {
 		return album;
 	}
-	public void setAlbum(Collection<Album> album) {
+	public void setAlbum(Set<Album> album) {
 		this.album = album;
 	}
 	
