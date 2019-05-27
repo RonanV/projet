@@ -39,8 +39,20 @@ public class MainController {
 	}																	//consumes=MediaType.APPLICATION_JSON_VALUE
 																	//consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	@PostMapping(value="/articles/add",produces= {"application/json"},consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public @ResponseBody void addArticle(/*@RequestBody*/ articles article) {
+	public @ResponseBody void addArticle(articles article) {
 		articlesRepository.storeArticleInDB(article);
+	}
+	
+	@PostMapping(value="/users/add",produces= {"application/json"},consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public @ResponseBody void addPerson(users personne) {
+		System.out.println("nom personne = "+personne.getNom());
+		System.out.println("téléphone personne = "+personne.getTelephone());
+		System.out.println("code postal personne = "+personne.getCodePostal());
+		System.out.println("ville personne = "+personne.getVille());
+		System.out.println("date naissance personne = "+personne.getDateNaissance());
+		System.out.println("tel mère personne = "+personne.getTelMere());
+		System.out.println("tel père personne = "+personne.getTelPere());
+		usersRepository.storePersonneInDB(personne);
 	}
 	//@GetMapping(path="/users/all")
 	@GetMapping(value="/users/all",produces= {"application/json"})

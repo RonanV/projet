@@ -25,7 +25,7 @@ public interface ArticlesRepository extends CrudRepository<articles, Integer> {
 public class ArticlesRepository implements CrudRepository<articles, Integer> {
 	
 	 private static final String driverClassName = "com.mysql.jdbc.Driver";
-	 private static final String url = "jdbc:mysql://localhost/bdprojet";
+	 private static final String url = "jdbc:mysql://localhost/bdassoc";
 	 private static final String dbUsername = "root";
 	 private static final String dbPassword = "";
 	 private static DataSource dataSource;
@@ -33,7 +33,6 @@ public class ArticlesRepository implements CrudRepository<articles, Integer> {
 	 
 	  "INSERT INTO article (" +
 	 
-	  " idarticle, " +
 	 
 	  " titre_Article, " +
 	 
@@ -45,7 +44,7 @@ public class ArticlesRepository implements CrudRepository<articles, Integer> {
 	  
 	  " idpersonne) " +
 	 
-	  "VALUES (?, ?, ?, ?, ?, ?)";
+	  "VALUES ( ?, ?, ?, ?, ?)";
 	 
 	
 	public ArticlesRepository() {
@@ -120,15 +119,15 @@ public class ArticlesRepository implements CrudRepository<articles, Integer> {
 	}
 	
 	
-	public void insertIntoArticle(int id_article, String titre, String texte, Date date, int id_photo, int id_personne) {
+	public void insertIntoArticle(String titre, String texte, Date date, int id_photo, int id_personne) {
         
         JdbcTemplate template = new JdbcTemplate(dataSource);
          
         // define query arguments
-        Object[] params = new Object[] { id_article, titre, texte, date, id_photo, id_personne};
+        Object[] params = new Object[] {titre, texte, date, id_photo, id_personne};
          
         // define SQL types of the arguments
-        int[] types = new int[] { Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.DATE, Types.INTEGER, Types.INTEGER };
+        int[] types = new int[] {Types.VARCHAR, Types.VARCHAR, Types.DATE, Types.INTEGER, Types.INTEGER };
  
         // execute insert query to insert the data
         // return number of row / rows processed by the executed query
@@ -151,11 +150,12 @@ public class ArticlesRepository implements CrudRepository<articles, Integer> {
  
   return dataSource;
     }
+    
 	//main Article
 	public void storeArticleInDB(articles article) {
 		
 		//récupérer les informations de l'article séparémment
-		 int id_article = article.getId();
+		// int id_article = article.getId();
 		 int auteur = article.getId_personne();
 		 int id_photo = article.getId_photo();
 		 String texte = article.getTexte();
@@ -167,7 +167,7 @@ public class ArticlesRepository implements CrudRepository<articles, Integer> {
 		 
 		 dataSource = getDataSource();
          //int id_article, String titre, String texte, Date date, int id_photo, int id_personne
-		 insertIntoArticle(id_article, titre, texte, date, id_photo, auteur);
+		 insertIntoArticle(titre, texte, date, id_photo, auteur);
 		 
 		 
 	}
