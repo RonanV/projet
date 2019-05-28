@@ -1,19 +1,29 @@
 package com.example.apispring.model;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
-public class Personne {
+public class Personne{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idpersonne;
 	private String nom_Personne;
 	private String prenom_Personne;
@@ -26,10 +36,14 @@ public class Personne {
 	private String telephonemere;
 	private Date datenaissance_Personne;
 	private String numlicence;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idphoto", insertable = false, updatable = false)
+	@Fetch(FetchMode.JOIN)
+	private Photo idphoto;
 	@ManyToMany(mappedBy="personne")
 	private Set<Droit> droit;
 	@ManyToMany(mappedBy="personne")
-	private Set<Tache> tache;
+	private Set<Tache> tache = new HashSet<Tache>();;
 	
 	
 	public Integer getIdpersonne() {
@@ -116,6 +130,11 @@ public class Personne {
 	public void setTache(Set<Tache> tache) {
 		this.tache = tache;
 	}
-	
+	public Photo getIdphoto() {
+		return idphoto;
+	}
+	public void setIdphoto(Photo idphoto) {
+		this.idphoto = idphoto;
+	}
 	
 }

@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Groupe {
 	
@@ -33,8 +35,9 @@ public class Groupe {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="groupe_horaire",
-				joinColumns= {@JoinColumn(name="idgroupe")},
-				inverseJoinColumns= {@JoinColumn(name="idhoraire")})
+				joinColumns= {@JoinColumn(name="idhoraire")},
+				inverseJoinColumns= {@JoinColumn(name="idgroupe")})
+	@JsonIgnore
 	private Set<Horaire> horaire;
 	
 	public Integer getIdgroupe() {

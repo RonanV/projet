@@ -1,5 +1,6 @@
 package com.example.apispring.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,18 +13,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Droit {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer iddroit;
 	private String libelledroit;
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name="droit_personne",
-				joinColumns= {@JoinColumn(name="iddroit")},
-				inverseJoinColumns= {@JoinColumn(name="idpersonne")})
-	private Set<Personne> personne;
+	@JsonIgnore
+	private Set<Personne> personne = new HashSet<Personne>();
 	public Integer getIddroit() {
 		return iddroit;
 	}
