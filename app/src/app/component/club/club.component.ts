@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Personne } from 'src/app/models/personne';
+import { PersonneService } from 'src/app/service/personne.service';
+
 
 @Component({
   selector: 'app-club',
@@ -14,12 +17,18 @@ export class ClubComponent implements OnInit {
   public groupe:boolean = false;
   public tenu:boolean = false;
 
+  personne:Personne[];
 
-  constructor() { 
+
+  constructor(private personneService: PersonneService) { 
     
   }
 
   ngOnInit() {
+    this.personneService.findAll().subscribe(data =>{
+      this.personne = data;
+      console.log("data",data);
+    });
   }
 
   display(name){

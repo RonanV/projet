@@ -12,7 +12,10 @@ div.contenu {
     background-color: #E2EAE8 ; 
     width:100%;
     height:100%;
-    
+  }
+
+  .calendrier{
+    text-align:center;
   }
 
 

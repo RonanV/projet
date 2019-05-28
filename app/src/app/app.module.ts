@@ -9,6 +9,9 @@ import { ContactComponent } from './component/contact/contact.component'
 import { ActualiteComponent } from './component/actualite/actualite.component';
 import { ArticleServiceService } from '../app/service/article-service.service';
 import { CalendrierComponent } from './component/calendrier/calendrier.component';
+import { DisciplineComponent } from './component/discipline/discipline.component';
+import { ConnectComponent } from './component/connect/connect.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { CalendrierComponent } from './component/calendrier/calendrier.component
     ClubComponent,
     ActualiteComponent,
     ContactComponent,
-    CalendrierComponent
+    CalendrierComponent,
+    DisciplineComponent,
+    ConnectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [ArticleServiceService],

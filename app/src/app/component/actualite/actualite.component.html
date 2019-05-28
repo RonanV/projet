@@ -1,7 +1,7 @@
   <div class="contenu">
     <div class="actu" *ngFor="let article of articles">
       <h2>{{article.titre_article}}</h2>
-      <h4>{{article.date_article | date:"dd/mm/yyyy"}}</h4>
+      <h4>{{article.date_article | date:"dd/MM/yyyy"}}</h4>
       
      <div class="view_actu">
       <div class="img_act" *ngIf="article.idphoto != null"> <img src="{{article.idphoto.chemin_Photo}}"></div>
@@ -18,7 +18,7 @@
       </div>
      </div>
       <div class="signature_actu">
-        {{article.id_personne}}
+        {{article.idpersonne.nom_Personne}} {{article.idpersonne.prenom_Personne}}
       </div>
 
     </div>

@@ -1,0 +1,38 @@
+div.contenu {
+    margin-left:10%;
+    margin-right:10%; 
+    margin-bottom:0%;
+    margin-top:0%;
+    background-color: #E4E4E4;
+    display:block;
+    float:left;
+    position: relative;
+    width:80%;
+  }
+
+
+  .presentation{
+    display: block;
+    float:left;
+    position: relative;
+    width:90%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-top:5%;
+    font-size: 20px;
+  }
+
+  h1{
+      text-align:center;
+  
+  }
+
+  img{
+      width:50%;
+  }
+
+  .photo{
+      display:block;
+      width:70%;
+      margin-left:15%;
+  }
