@@ -17,7 +17,7 @@ export class ClubComponent implements OnInit {
   public groupe:boolean = false;
   public tenu:boolean = false;
 
-  personne:Personne[];
+  personnes:Personne[];
 
 
   constructor(private personneService: PersonneService) { 
@@ -26,8 +26,9 @@ export class ClubComponent implements OnInit {
 
   ngOnInit() {
     this.personneService.findAll().subscribe(data =>{
-      this.personne = data;
+      this.personnes = data;
       console.log("data",data);
+      console.log("tache", this.personnes);
     });
   }
 

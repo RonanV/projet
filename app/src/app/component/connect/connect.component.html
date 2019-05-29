@@ -1,10 +1,146 @@
 <div class="contenu">
-<a (click)="display('perso')"><div class="button"><br>
+<a (click)="display('perso')"><div class="button" ><br>
 <p>MODIFIER MES INFORMATIONS PERSONNELLES</p>
 <img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
 </div></a>
 <div *ngIf="perso" class="detail">
-COUCOU
+        <i>CHAQUE ADHERENT POURRA MODIFIER SES INFORMATIONS, LE INPUT VIDE SERA CACHE ET CONTIENDRA L'ID</i>
+<form>
+    <label>Nom<input type="text" name="nom" onkeyup="this.value=this.value.toUpperCase()" required/></label><br>
+    <label>Prénom<input type="text" name="prenom" required/></label><br>
+    <label>Date de naissance<input type="date" name="naissance" required/></label><br>
+    <label>Mail<input type="mail" name="mail" required/></label><br>
+    <label>Rue<input type="text" name="rue" required/></label><br>
+    <label>Code postal<input type="text" name="cp" maxlength="5" required/></label><br>
+    <label>Ville<input type="text" name="ville" required/></label><br>
+    <label>Numéro de la mère<input type="text" name="mere" maxlength="10" required/></label><br>
+    <label>Numéro du prère<input type="text" name="pere" maxlength="10" required/></label><br>
+    <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" required/></label><br>
+    <label>Numéro de licence<input type="text" name="licence" disabled/></label><br>
+    <label><input type="text" name="idpersonne"/></label><br>    
+    <label><input type="submit" value="Modifier mes informations"/></label><br> 
+</form>
 </div>
 
+<a (click)="display('modif_pers')"><div class="button" ><br>
+    <p>MODIFIER LES INFORMATIONS D'UN ADHERENTS</p>
+    <img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
+    </div></a>
+    <div *ngIf="modif_pers" class="detail">
+    <form *ngIf="result != 'coucou'">
+        <i>IL FAUDRAIT POUVOIR RECHERCHER UN ADHRENT SOIT PAR LE NOM? LE PRENOM, UNE DATE DE NAISSANCE, UN MAIL OU UN NUMERO</i>
+        <h2>Rechercher un adhérent</h2><br>
+        <label>Nom<input type="text" name="search_nom" onkeyup="this.value=this.value.toUpperCase()"/></label><br>
+        <label>Prénom<input type="text" name="search_prenom"/></label><br>
+        <label>Date de naissance<input type="date" name="search_naissance"/></label><br>
+        <label>Mail<input type="mail" name="search_mail" maxlength="10"/></label><br>
+        <label>Numéro<input type="text" name="search_num"/></label><br>
+        <label><input type="submit" value="Rechercher"/></label><br>
+    </form>
+
+    <div class="result">
+            <i>LES RESULTATS DE LA RECHERCHE SERONT AFFICHER LA </i>
+            <h2>Résultat(s) de la rechercher</h2><br>
+            <p>Aucun résulat</p>
+            <a (click)="modif(1)"><div class="pers_result">
+                <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                <h3>DELMARLE Guillaume<br>
+                    <small>Trampoline 11 ans et + <br>2018/2019</small>
+                </h3>
+            </div></a>
+
+            <a (click)="modif(1)"><div class="pers_result">
+                    <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                    <h3>DELMARLE Guillaume<br>
+                        <small>Trampoline 11 ans et +<br>2018/2019</small>
+                    </h3>
+                </div></a>
+                <a (click)="modif(1)"><div class="pers_result">
+                        <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                        <h3>DELMARLE Guillaume<br>
+                            <small>Trampoline 11 ans et +<br>2018/2019</small>
+                        </h3>
+                    </div></a>
+                    <a (click)="modif(1)"><div class="pers_result">
+                            <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                            <h3>DELMARLE Guillaume<br>
+                                <small>Trampoline 11 ans et +<br>2018/2019</small>
+                            </h3>
+                        </div></a>
+                        <a (click)="modif(1)"><div class="pers_result">
+                                <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                                <h3>DELMARLE Guillaume<br>
+                                    <small>Trampoline 11 ans et +<br>2018/2019</small>
+                                </h3>
+                            </div></a>
+    </div>
+
+
+    <form>
+        <h2>Modifier les informations de l'adhérents</h2><br>
+        <i>APRES AVOIR CLIQUE SUR LA PERSONNE, TOUTES SES INFO S'AFFICHE ET ON PEUT LES MODIFIER</i>
+        <label>Nom<input type="text" name="nom" onkeyup="this.value=this.value.toUpperCase()" required/></label><br>
+        <label>Prénom<input type="text" name="prenom" required/></label><br>
+        <label>Date de naissance<input type="date" name="naissance" required/></label><br>
+        <label>Mail<input type="mail" name="mail" required/></label><br>
+        <label>Rue<input type="text" name="rue" required/></label><br>
+        <label>Code postal<input type="text" name="cp" maxlength="5" required/></label><br>
+        <label>Ville<input type="text" name="ville" required/></label><br>
+        <label>Numéro de la mère<input type="text" name="mere" maxlength="10" required/></label><br>
+        <label>Numéro du prère<input type="text" name="pere" maxlength="10" required/></label><br>
+        <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" required/></label><br>
+        <label>Numéro de licence<input type="text" name="licence"/></label><br>
+        <label><input type="text" name="idpersonne"/></label><br>    
+        <label><input type="submit" value="Modifier mes informations"/></label><br> 
+    </form>
+    </div>
+
+=<a (click)="display('gestion_groupe')"><div class="button" ><br>
+    <p>GESTION DES GROUPES</p>
+    <img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
+    </div></a>
+    <div *ngIf="gestion_groupe" class="detail">
+        <div class="gestion_groupe">
+                <i>LORSQUE L'ON CLIQUE SUR LE BOUTON LA PARTIE INFERIEUR S'AFFICHE</i>
+            <button>Ajouter un groupe</button>
+            <div class="creat_groupe">
+                <form>
+                    <h2>Créer un groupe</h2>
+                    <label>Nom du groupe<input type="text"/></label>
+                    <label>Entraîneur<select><option>-- Sélectionnez un entraîneur</option></select></label>
+                    <label>Nombre maximum de praticant<input type="number"/></label>
+                    <label><input type="submit" value="Ajoter le groupe"/></label>
+                </form>
+            </div>
+            <i>LA LISTE DES GROUPES DE LA DERNIERE SAISON S'AFFICHE</i>
+            <div class="groupe">
+                <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
+                <h2>Trampoline 11 ans et +<br>
+                    <small>Guillaume (2 sur 20)</small><br>
+                </h2>
+            </div>
+            <div class="groupe">
+                    <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
+                <h2>Trampoline 11 ans et +<br>
+                    <small>Guillaume (2 sur 20)</small><br>
+                </h2>
+            </div>
+            <div class="groupe">
+                    <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
+                    <h2>Trampoline 11 ans et +<br>
+                        <small>Guillaume (2 sur 20)</small><br>
+                    </h2>
+            </div>
+            <div class="modif_group">
+                    <form>
+                            <i>APRES AVOIR CLIQUE SUR UN GROUPE CETTE PARTIE S'AFFICHE ET ON PEUT MODIFIER LES INFO</i>
+                            <h2>Modifier le groupe</h2>
+                            <label>Nom du groupe<input type="text"/></label>
+                            <label>Entraîneur<select><option>-- Sélectionnez un entraîneur</option></select></label>
+                            <label>Nombre maximum de praticant<input type="number"/></label>
+                            <label><input type="submit" value="Ajoter le groupe"/></label>
+                    </form>
+            </div>
+        </div>
+    </div>
 </div>
