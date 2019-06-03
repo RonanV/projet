@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.apispring.jointure.tache_personne;
 import com.example.apispring.model.Article;
 import com.example.apispring.model.Droit;
 import com.example.apispring.model.Personne;
@@ -36,7 +37,7 @@ public class MainController {
 	
 	@Autowired 
 	private DroitRepository droitRepository;
-	
+		
 	@GetMapping(path="/articles/add")
 	public @ResponseBody String addNewArticle () {
 		Article n = new Article();
@@ -64,18 +65,26 @@ public class MainController {
 	@GetMapping(path="/personnes/add")
 	public @ResponseBody String addNewPersonne () {
 			Tache t = new Tache();
-			Droit d = new Droit();
-			t.setLibelletache("Bonjour");
-			d.setLibelledroit("ta pas le droit");
+			t.setLibelletache("bonjour");
 			Personne n = new Personne();
 			n.setNom_Personne("Vallee");
 			n.setPrenom_Personne("Ronan");
-			t.getPersonne().add(n);
+			tache_personne tp = new tache_personne();
+			tp.setTache(t);
+			tp.setPersonne(n);
+			tp.setDetail("detail");
+			n.getTache().add(tp);
 			tacheRepository.save(t);
-			d.getPersonne().add(n);
-			droitRepository.save(d);
+			personneRepository.save(n);
 			
+			
+						
 			return "Saved";
 		}
+	@GetMapping(path="/taches/all")
+	public @ResponseBody Iterable<Tache> getalltache()
+	{
+		return tacheRepository.findAll();
+	}
 	
 }

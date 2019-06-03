@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,12 +16,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.example.apispring.jointure.tache_personne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Personne{
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,10 +52,12 @@ public class Personne{
 	private Photo idphoto;
 	@ManyToMany(mappedBy="personne")
 	private Set<Droit> droit;
-	@ManyToMany(mappedBy="personne")
-	private Set<Tache> tache = new HashSet<Tache>();;
+	@OneToMany(mappedBy = "personne", cascade = CascadeType.ALL)
+	private Set<tache_personne> tache = new HashSet<tache_personne>();;
 	
-	
+	public Personne() {
+		super();
+	}
 	public Integer getIdpersonne() {
 		return idpersonne;
 	}
@@ -124,10 +136,10 @@ public class Personne{
 	public void setDroit(Set<Droit> droit) {
 		this.droit = droit;
 	}
-	public Set<Tache> getTache() {
+	public Set<tache_personne> getTache() {
 		return tache;
 	}
-	public void setTache(Set<Tache> tache) {
+	public void setTache(Set<tache_personne> tache) {
 		this.tache = tache;
 	}
 	public Photo getIdphoto() {
