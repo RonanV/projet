@@ -14,8 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+import com.example.apispring.jointure.tache_personne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Tache{
@@ -24,9 +30,12 @@ public class Tache{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idtache;
 	private String libelletache;
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JsonIgnore
-	private Set<Personne> personne = new HashSet<Personne>();
+	@OneToMany(mappedBy = "tache", cascade = CascadeType.ALL)
+	private Set<tache_personne> personne = new HashSet<tache_personne>();
+	
+	public Tache() {
+		super();
+	}
 	public Integer getIdtache() {
 		return idtache;
 	}
@@ -39,10 +48,10 @@ public class Tache{
 	public void setLibelletache(String libelletache) {
 		this.libelletache = libelletache;
 	}
-	public Set<Personne> getPersonne() {
+	public Set<tache_personne> getPersonne() {
 		return personne;
 	}
-	public void setPersonne(Set<Personne> personne) {
+	public void setPersonne(Set<tache_personne> personne) {
 		this.personne = personne;
 	}	
 	
