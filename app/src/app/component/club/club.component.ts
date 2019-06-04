@@ -28,7 +28,7 @@ export class ClubComponent implements OnInit {
     this.personneService.findAll().subscribe(data =>{
       this.personnes = data;
       console.log("data",data);
-      console.log("tache", this.personnes);
+      console.log("tache",this.personnes.prenom_Personne);
     });
   }
 
