@@ -21,13 +21,17 @@ public class Photo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idphoto;
+	
 	private String chemin_Photo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idgroupe", insertable = false, updatable = false)
+	@JoinColumn(name = "idgroupe")
 	@Fetch(FetchMode.JOIN)
 	private Groupe idgroupe;
+	
 	@ManyToMany(mappedBy="photo")
 	private Set<Album> album;
+	
 	public Integer getIdphoto() {
 		return idphoto;
 	}

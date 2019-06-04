@@ -16,14 +16,17 @@ public class Membre {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idmembre;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idpersonne", insertable = false, updatable = false)
+	@JoinColumn(name = "idpersonne")
 	@Fetch(FetchMode.JOIN)
 	private Personne idpersonne;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idgroupe", insertable = false, updatable = false)
+	@JoinColumn(name = "idgroupe")
 	@Fetch(FetchMode.JOIN)
 	private Groupe idgroupe;
+	
 	public Integer getIdmembre() {
 		return idmembre;
 	}

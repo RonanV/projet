@@ -17,19 +17,24 @@ public class Inscription {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idinscription;
+	
 	private String certificat;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idpersonne", insertable = false, updatable = false)
+	@JoinColumn(name = "idpersonne")
 	@Fetch(FetchMode.JOIN)
 	private Personne idpersonne;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idetat", insertable = false, updatable = false)
+	@JoinColumn(name = "idetat")
 	@Fetch(FetchMode.JOIN)
 	private Etat idetat;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idsaison", insertable = false, updatable = false)
+	@JoinColumn(name = "idsaison")
 	@Fetch(FetchMode.JOIN)
 	private Saison idsaison;
+	
 	public Integer getIdinscription() {
 		return idinscription;
 	}

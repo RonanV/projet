@@ -21,10 +21,13 @@ public class Droit {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer iddroit;
+	
 	private String libelledroit;
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JsonIgnore
 	private Set<Personne> personne = new HashSet<Personne>();
+	
 	public Integer getIddroit() {
 		return iddroit;
 	}
