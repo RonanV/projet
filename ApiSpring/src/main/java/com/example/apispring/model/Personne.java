@@ -35,6 +35,7 @@ public class Personne{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idpersonne;
+	
 	private String nom_Personne;
 	private String prenom_Personne;
 	private String telephone;
@@ -46,12 +47,18 @@ public class Personne{
 	private String telephonemere;
 	private Date datenaissance_Personne;
 	private String numlicence;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idphoto", insertable = false, updatable = false)
 	@Fetch(FetchMode.JOIN)
 	private Photo idphoto;
+	
 	@ManyToMany(mappedBy="personne")
 	private Set<Droit> droit;
+	
+	@ManyToMany(mappedBy="personne")
+	private Set<Saison> idsaison;
+	
 	@OneToMany(mappedBy = "personne", cascade = CascadeType.ALL)
 	private Set<tache_personne> tache = new HashSet<tache_personne>();;
 	
@@ -135,6 +142,12 @@ public class Personne{
 	}
 	public void setDroit(Set<Droit> droit) {
 		this.droit = droit;
+	}
+	public Set<Saison> getIdsaison() {
+		return idsaison;
+	}
+	public void setIdsaison(Set<Saison> idsaison) {
+		this.idsaison = idsaison;
 	}
 	public Set<tache_personne> getTache() {
 		return tache;

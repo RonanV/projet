@@ -24,12 +24,14 @@ public class Groupe {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idgroupe;
+	
 	private String libellegrp;
 	private String tache_Groupe;
 	private String limitemax;
 	private String tarif_Groupe;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idphoto", insertable = false, updatable = false)
+	@JoinColumn(name = "idphoto")
 	@Fetch(FetchMode.JOIN)
 	private Photo idphoto;
 	
@@ -39,6 +41,11 @@ public class Groupe {
 				inverseJoinColumns= {@JoinColumn(name="idgroupe")})
 	@JsonIgnore
 	private Set<Horaire> horaire;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idsaison")
+	@Fetch(FetchMode.JOIN)
+	private Saison idsaison;
 	
 	public Integer getIdgroupe() {
 		return idgroupe;

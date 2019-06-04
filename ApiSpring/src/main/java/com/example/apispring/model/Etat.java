@@ -11,7 +11,9 @@ public class Etat {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idetat;
+	
 	private String libelleetat;
+	
 	public Integer getIdetat() {
 		return idetat;
 	}

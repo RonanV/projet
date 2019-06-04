@@ -14,12 +14,15 @@ public class Horaire {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idhoraire;
+	
 	private String libellehoraire;
 	private String jour_horaire;
 	private String heuredebut;
 	private String heurefin;
+	
 	@ManyToMany(mappedBy="horaire")
 	private Set<Groupe> groupe;
+	
 	public Integer getIdhoraire() {
 		return idhoraire;
 	}

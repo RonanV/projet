@@ -2,6 +2,7 @@ package com.example.apispring.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,15 +20,18 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idarticle;
+	
 	private String texte_article;
 	private String titre_article;
 	private Date date_article;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idpersonne", insertable = false, updatable = false)
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "idpersonne")
 	@Fetch(FetchMode.JOIN)
 	private Personne idpersonne;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idphoto", insertable = false, updatable = false)
+	@JoinColumn(name = "idphoto")
 	@Fetch(FetchMode.JOIN)
 	private Photo idphoto;
 

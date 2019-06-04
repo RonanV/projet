@@ -21,9 +21,11 @@ public class Album {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idalbum;
+	
 	private String titre_Album;
 	private String description_Album;
 	private Date date_Album;
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="album_photo",
 				joinColumns= {@JoinColumn(name="idalbum")},

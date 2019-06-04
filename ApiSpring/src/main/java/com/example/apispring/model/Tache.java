@@ -29,7 +29,9 @@ public class Tache{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idtache;
+	
 	private String libelletache;
+	
 	@OneToMany(mappedBy = "tache", cascade = CascadeType.ALL)
 	private Set<tache_personne> personne = new HashSet<tache_personne>();
 	
