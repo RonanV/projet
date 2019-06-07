@@ -89,7 +89,7 @@ public class MainController {
 		Personne p = new Personne();
 		p = personneRepository.findById(id).get();
 		String num = p.getNumlicence();
-		String mdp = "mdp";
+		String mdp = p.getPassword();
 		Integer idpersonne = p.getIdpersonne();
 		
 		if (num.equals(numero) && mdp.equals(pass) && idpersonne.equals(id)) {

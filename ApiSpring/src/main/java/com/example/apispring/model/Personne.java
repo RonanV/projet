@@ -162,5 +162,12 @@ public class Personne{
 	public void setIdphoto(Photo idphoto) {
 		this.idphoto = idphoto;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 }
