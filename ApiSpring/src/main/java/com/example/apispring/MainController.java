@@ -1,9 +1,12 @@
 package com.example.apispring;
 
 import java.util.Date;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,7 @@ import com.example.apispring.repository.TacheRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path= "/")
 public class MainController {
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@Autowired
 	private ArticleRepository articleRepository;
@@ -75,6 +79,37 @@ public class MainController {
 	@GetMapping(path="/personnes/all")
 	public @ResponseBody Iterable<Personne> getAllUsers() {
 		return personneRepository.findAll();
+	}
+	@GetMapping(path="/personnes/{id}")
+	public @ResponseBody Optional<Personne> getByid(@RequestParam Integer id) {
+		return personneRepository.findById(id);
+	}
+	@GetMapping(path="/personnes/verif")
+	public @ResponseBody boolean verfiNumMdp(@RequestParam String numero, @RequestParam String pass, @RequestParam Integer id) {
+		Personne p = new Personne();
+		p = personneRepository.findById(id).get();
+		String num = p.getNumlicence();
+		String mdp = "mdp";
+		Integer idpersonne = p.getIdpersonne();
+		
+		if (num.equals(numero) && mdp.equals(pass) && idpersonne.equals(id)) {
+			return true;
+		}
+		else if (!num.equals(numero)) {
+			logger.error(num+ " " + numero );
+			logger.error("les numéros de licence ne correspondent pas");
+			return false;
+		}
+		else if (!mdp.equals(pass)) {
+			logger.error("les password ne correspondent pas");
+			return false;
+		}
+		else {
+			logger.error("erreur lors de la recuperation des informations de la personne");
+			return false;
+		}
+		
+		
 	}
 	
 	@GetMapping(path="/personnes/add")
