@@ -1,6 +1,7 @@
 package com.example.apispring;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -85,30 +86,29 @@ public class MainController {
 		return personneRepository.findById(id);
 	}
 	@GetMapping(path="/personnes/verif")
-	public @ResponseBody boolean verfiNumMdp(@RequestParam String numero, @RequestParam String pass, @RequestParam Integer id) {
+	public @ResponseBody Integer verfiNumMdp(@RequestParam String numero, @RequestParam String pass) {
 		Personne p = new Personne();
-		p = personneRepository.findById(id).get();
+		p = personneRepository.findByNumlicence(numero);
+		
 		String num = p.getNumlicence();
 		String mdp = p.getPassword();
-		Integer idpersonne = p.getIdpersonne();
 		
-		if (num.equals(numero) && mdp.equals(pass) && idpersonne.equals(id)) {
-			return true;
+		if (num.equals(numero) && mdp.equals(pass)) {
+			return p.getIdpersonne();
 		}
 		else if (!num.equals(numero)) {
 			logger.error(num+ " " + numero );
 			logger.error("les numéros de licence ne correspondent pas");
-			return false;
+			return 0;
 		}
 		else if (!mdp.equals(pass)) {
 			logger.error("les password ne correspondent pas");
-			return false;
+			return 0;
 		}
 		else {
 			logger.error("erreur lors de la recuperation des informations de la personne");
-			return false;
+			return 0;
 		}
-		
 		
 	}
 	
