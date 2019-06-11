@@ -21,6 +21,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import org.springframework.stereotype.Indexed;
+
 import com.example.apispring.jointure.tache_personne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,18 +33,17 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Personne{
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idpersonne;
-	
-	private String nom_Personne;
-	private String prenom_Personne;
+
+	private String nomPersonne;
+	private String prenomPersonne;
 	private String telephone;
 	private String rue_Personne;
 	private String codepostal_Personne;
 	private String ville_Personne;
-	private String email_Personne;
+	private String emailPersonne;
 	private String telephonepere;
 	private String telephonemere;
 	private Date datenaissance_Personne;
@@ -72,17 +73,17 @@ public class Personne{
 	public void setIdpersonne(Integer idpersonne) {
 		this.idpersonne = idpersonne;
 	}
-	public String getNom_Personne() {
-		return nom_Personne;
+	public String getNomPersonne() {
+		return nomPersonne;
 	}
-	public void setNom_Personne(String nom_Personne) {
-		this.nom_Personne = nom_Personne;
+	public void setNomPersonne(String nomPersonne) {
+		this.nomPersonne = nomPersonne;
 	}
-	public String getPrenom_Personne() {
-		return prenom_Personne;
+	public String getPrenomPersonne() {
+		return prenomPersonne;
 	}
-	public void setPrenom_Personne(String prenom_Personne) {
-		this.prenom_Personne = prenom_Personne;
+	public void setPrenom_Personne(String prenomPersonne) {
+		this.prenomPersonne = prenomPersonne;
 	}
 	public String getTelephone() {
 		return telephone;
@@ -108,11 +109,11 @@ public class Personne{
 	public void setVille_Personne(String ville_Personne) {
 		this.ville_Personne = ville_Personne;
 	}
-	public String getEmail_Personne() {
-		return email_Personne;
+	public String getEmailPersonne() {
+		return emailPersonne;
 	}
-	public void setEmail_Personne(String email_Personne) {
-		this.email_Personne = email_Personne;
+	public void setEmailPersonne(String emailPersonne) {
+		this.emailPersonne = emailPersonne;
 	}
 	public String getTelephonepere() {
 		return telephonepere;
