@@ -17,6 +17,17 @@ export class ClubComponent implements OnInit {
   public groupe:boolean = false;
   public tenu:boolean = false;
 
+  tache_bureau:Array = [];
+  tache_comite:Array = [];
+  tache_entraineur_gym:Array = [];
+  tache_entraineur_trampo:Array = [];
+  tache_entraineur_petit:Array = [];
+  tache_entraineur_zumba:Array = [];
+  tache_juge_gym:Array = [];
+  tache_juge_trampo:Array = [];
+  membre:Array = [];
+  membreb:Array = [];
+
   personnes:Personne[];
 
 
@@ -27,8 +38,75 @@ export class ClubComponent implements OnInit {
   ngOnInit() {
     this.personneService.findAll().subscribe(data =>{
       this.personnes = data;
-      console.log("data",data);
-      console.log("tache",this.personnes.prenom_Personne);
+      for (let i=0; i < this.personnes.length ; i++) {
+        for (let j=0; j < this.personnes[i].tache.length; j++){
+          if(this.personnes[i].tache[j].tache.idtache === 1){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_bureau.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 2){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_comite.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 3){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_entraineur_gym.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 4){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_entraineur_trampo.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 5){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_entraineur_petit.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 6){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_entraineur_zumba.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 7){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_juge_gym.push(this.membre);
+            this.membre = [];
+          }
+          if(this.personnes[i].tache[j].tache.idtache === 8){
+            this.membre.detail = this.personnes[i].tache[j].detail;
+            this.membre.nom = this.personnes[i].tache[j].personne.nom_Personne;
+            this.membre.prenom = this.personnes[i].tache[j].personne.prenom_Personne;
+            this.membre.photo = this.personnes[i].tache[j].personne.idphoto;
+            this.tache_juge_trampo.push(this.membre);
+            this.membre = [];
+          }
+        
+        }
+      }
     });
   }
 

@@ -6,9 +6,10 @@ export class Personne {
     rue_Personne: String;
     codepostal_Personne: String;
     ville_Personne: String;
-    telephone_Personne: String;
+    telephone: String;
     telephonepere: String;
     telephonemere: String;
     numlicence: String;
     idpersonne: number;
+    password: String;
 }
