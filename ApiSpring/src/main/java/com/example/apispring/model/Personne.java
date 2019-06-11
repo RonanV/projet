@@ -47,6 +47,7 @@ public class Personne{
 	private String telephonemere;
 	private Date datenaissance_Personne;
 	private String numlicence;
+	private String password;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idphoto", insertable = false, updatable = false)
@@ -161,5 +162,12 @@ public class Personne{
 	public void setIdphoto(Photo idphoto) {
 		this.idphoto = idphoto;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 }
