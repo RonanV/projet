@@ -117,28 +117,30 @@ public class MainController {
 		
 	}
 	@GetMapping(path="/personnes/verif")
-	public Integer verfiNumMdp(@RequestParam String numero, @RequestParam String pass) {
+	public Personne verfiNumMdp(@RequestParam String numero, @RequestParam String pass) {
 		Personne p = new Personne();
 		p = personneRepository.findByNumlicence(numero);
 		if(p != null)
 		{
 			String num = p.getNumlicence();
 			String mdp = p.getPassword();
-			
-			if (num.equals(numero) && mdp.equals(pass)) {
-				return p.getIdpersonne();
-			}
-			else if (!num.equals(numero)) {
-				throw new InvalidDataException("Le numero de licence ne correspond pas");
-			}
-			else if (!mdp.equals(pass)) {
-				throw new InvalidDataException("Le mot de passe est incorrect ");
-			}
-			else {
-				throw new InvalidDataException("Erreur lors de la recuperation des informations utilisateurs");
+			logger.error(mdp + "num : " + num);
+			if(! num.isEmpty() && ! mdp.isEmpty()) {
+				if (num.equals(numero) && mdp.equals(pass)) {
+					return p;
+				}
+				else if (!num.equals(numero)) {
+					throw new InvalidDataException("Le numero de licence ne correspond pas");
+				}
+				else if (!mdp.equals(pass)) {
+					throw new InvalidDataException("Le mot de passe est incorrect ");
+				}
+				else {
+					throw new InvalidDataException("L'utilisateur avec le numero de licence \" + numero + \" n'existe pas");
+				}
 			}
 		}
-		throw new InvalidDataException("L'utilisateur avec le numero de licence " + numero + " n'existe pas");		
+		throw new InvalidDataException("Erreur lors de la recuperation des informations utilisateurs");		
 	}
 	@GetMapping(path="/personnes/add")
 	public String addNewPersonne () {
