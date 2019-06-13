@@ -12,4 +12,5 @@ export class Personne {
     numlicence: String;
     idpersonne: number;
     password: String;
+    tache: String;
 }

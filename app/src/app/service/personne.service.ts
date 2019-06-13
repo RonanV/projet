@@ -9,10 +9,11 @@ import { Observable } from 'rxjs';
 export class PersonneService {
 
   private urlPersonne: string;
+  private urlPersonne2: string;
 
   constructor(private http: HttpClient) { 
     this.urlPersonne = 'http://localhost:8080/personnes/all'
-    this.urlPersonne2 = 'http://localhost:8080/personnes/verif?id=1&numero='
+    this.urlPersonne2 = 'http://localhost:8080/personnes/verif?numero='
   }
 
   public findAll(): Observable<Personne[]> {
@@ -24,10 +25,11 @@ export class PersonneService {
   }
 
   public findAllPass(user, pass): Observable<Personne[]> {
-    return this.http.get<Personne[]>(this.urlPersonne2 + user + "&pass=" + pass);
+    this.urlPersonne2 = 'http://localhost:8080/personnes/verif?numero=' + user + "&pass=" + pass;
+    return this.http.get<Personne[]>(this.urlPersonne2);
   }
 
   public savePass(personne: Personne){
-    return this.http.post<Personne>(this.urlPersonne2 + user + "&mdp=" + pass, personne);
+    return this.http.post<Personne>(this.urlPersonne2, personne);
   }
 }

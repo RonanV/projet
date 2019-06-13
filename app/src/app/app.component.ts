@@ -13,9 +13,11 @@ export class AppComponent implements OnInit {
   title = 'etoiles-project';
   user:boolean = false;
   mdp:boolean = false;
-  verif:boolean = true;
+  verif:boolean = false;
   verification:boolean = false;
   login:String = "Se connecter";
+  id:String = "";
+  psw:String = "";
 
   constructor( private router:Router, private personneService: PersonneService){
     
@@ -44,17 +46,19 @@ export class AppComponent implements OnInit {
     }else{
       this.user = false;
       this.mdp = false;
-      this.personneService.findAllPass(f.value.uname, f.value.psw).subscribe(data =>{
+      this.id=f.value.uname;
+      this.psw=f.value.psw;
+      this.personneService.findAllPass(this.id, this.psw).subscribe(data =>{
         console.log(data);
-      });
-      if(this.verif){
+        this.verif = true;
         (document.getElementById('id01').style.display='none');
         this.router.navigateByUrl('/connect');
         f.reset(1);
         this.login = "Guillaume DELMARLE";
-      }else{
+      }, erreur => {
+        console.log(erreur.error.message);
         this.verification = true;
-      }
+      });
     }
   }
   
