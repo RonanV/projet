@@ -62,7 +62,10 @@ public class Personne{
 	private Set<Saison> idsaison;
 	
 	@OneToMany(mappedBy = "personne", cascade = CascadeType.ALL)
-	private Set<tache_personne> tache = new HashSet<tache_personne>();;
+	private Set<tache_personne> tache = new HashSet<tache_personne>();
+	
+	@ManyToMany(mappedBy = "personne")
+	private Set<Groupe> groupe;
 	
 	public Personne() {
 		super();
@@ -82,7 +85,7 @@ public class Personne{
 	public String getPrenomPersonne() {
 		return prenomPersonne;
 	}
-	public void setPrenom_Personne(String prenomPersonne) {
+	public void setPrenomPersonne(String prenomPersonne) {
 		this.prenomPersonne = prenomPersonne;
 	}
 	public String getTelephone() {
@@ -168,6 +171,12 @@ public class Personne{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Set<Groupe> getGroupe() {
+		return groupe;
+	}
+	public void setGroupe(Set<Groupe> groupe) {
+		this.groupe = groupe;
 	}
 	
 	

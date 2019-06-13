@@ -5,32 +5,13 @@
   <li class="mainnav"><a routerLink="/discipline" class="mainnav"><p>Disciplines Proposées</p></a></li>
   <li class="mainnav"><a routerLink="/calendrier" class="mainnav"><p>Calendrier</p></a></li>
   <li class="mainnav"><a routerLink="/contact" class="mainnav"><p>Contact</p></a></li>
-  <li class="mainnav2"><a routerLink="/connect" class="mainnav" onclick="document.getElementById('id01').style.display='block'"><p>{{ login }}</p></a></li>
+  <li class="mainnav2"><a routerLink="/connect" class="mainnav" (click)="display();" onclick=""><p>{{ login }}</p></a></li>
 </ul>
 </header>
 <div class="contenu" name="contenu">
   
 </div>
 <!-- -----------LOGIN PART------------------>
-<form action="action_page.php" *ngIf="test">
-  
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <button type="submit">Login</button>
-    </div>
-  
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-
-
 <!-- The Modal -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" 

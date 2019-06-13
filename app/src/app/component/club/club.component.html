@@ -35,27 +35,22 @@
   <div class="bureau" ng-hide="bureau">
    <div class="presentation_bureau">Atque, ut Tullius ait, ut etiam ferae fame monitae plerumque ad eum locum ubi aliquando pastae sunt revertuntur, ita homines instar turbinis degressi montibus impeditis et arduis loca petivere mari confinia, per quae viis latebrosis sese convallibusque occultantes cum appeterent noctes luna etiam tum cornuta ideoque nondum solido splendore fulgente nauticos observabant quos cum in somnum sentirent effusos per ancoralia, quadrupedo gradu repentes seseque suspensis passibus iniectantes in scaphas eisdem sensim nihil opinantibus adsistebant et incendente aviditate saevitiam ne cedentium quidem ulli parcendo obtruncatis omnibus merces opimas velut viles nullis repugnantibus avertebant. haecque non diu sunt perpetrata.</div>
   <div class="membre_bureau"><h3 class="titre">Membre du bureau</h3>
-    <div class="personne"> 
-      <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+    <div class="personne" *ngFor="let membreb of tache_bureau"> 
+      <img *ngIf="membreb.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+      <img *ngIf="membreb.id!=null" src="{{membre.photo}}">
       <p>
-        <b>DELMARLE Guillaume</b><br>
-        Président
+        <b>{{membreb.nom}} {{membreb.prenom}}</b><br>
+        {{membreb.detail}}
       </p>
-    </div>
-    <div class="personne"> 
-        <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-        <p>
-          <b>DELMARLE Guillaume</b><br>
-          Président
-        </p>
-      </div>
+  </div>
   </div>
   <div class="membre_comite"><h3 class="titre">Membre du comité directeur</h3>
-    <div class="personne"> 
-        <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+    <div class="personne" *ngFor="let membre of tache_comite"> 
+      <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+      <img *ngIf="membre.id!=null" src="{{membre.photo}}">
         <p>
-          <b>DELMARLE Guillaume</b><br>
-          Président
+          <b>{{membre.nom}} {{membre.prenom}}</b><br>
+        {{membre.detail}}
         </p>
       </div>
   </div>
@@ -67,41 +62,45 @@
       <div class="presentation_bureau">Atque, ut Tullius ait, ut etiam ferae fame monitae plerumque ad eum locum ubi aliquando pastae sunt revertuntur, ita homines instar turbinis degressi montibus impeditis et arduis loca petivere mari confinia, per quae viis latebrosis sese convallibusque occultantes cum appeterent noctes luna etiam tum cornuta ideoque nondum solido splendore fulgente nauticos observabant quos cum in somnum sentirent effusos per ancoralia, quadrupedo gradu repentes seseque suspensis passibus iniectantes in scaphas eisdem sensim nihil opinantibus adsistebant et incendente aviditate saevitiam ne cedentium quidem ulli parcendo obtruncatis omnibus merces opimas velut viles nullis repugnantibus avertebant. haecque non diu sunt perpetrata.</div>
       <div class="part_entraineur">
         <h3>Entraîneurs Gymnastique</h3>
-          <div class="personne_e"> 
-              <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+          <div class="personne_e" *ngFor="let membre of tache_entraineur_gym"> 
+            <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+            <img *ngIf="membre.id!=null" src="{{membre.photo}}">
               <p>
-                <b>DELMARLE<br>Guillaume</b><br>
-                Président
+                <b>{{membre.nom}} {{membre.prenom}}</b><br>
+                {{membre.detail}}
               </p>
             </div>
       </div>
       <div class="part_entraineur">
           <h3>Entraîneurs Trampoline</h3>
-            <div class="personne_e"> 
-                <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+            <div class="personne_e" *ngFor="let membre of tache_entraineur_trampo"> 
+              <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+              <img *ngIf="membre.id!=null" src="{{membre.photo}}">
                 <p>
-                  <b>DELMARLE<br>Guillaume</b><br>
-                  Président
+                  <b>{{membre.nom}} {{membre.prenom}}</b><br>
+                   {{membre.detail}}
                 </p>
               </div>
         </div>
         <div class="part_entraineur">
             <h3>Entraîneurs Petite-Enfance</h3>
-              <div class="personne_e"> 
-                  <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+              <div class="personne_e" *ngFor="let membre of tache_entraineur_petit"> 
+                <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                <img *ngIf="membre.id!=null" src="{{membre.photo}}">
                   <p>
-                    <b>DELMARLE<br>Guillaume</b><br>
-                    Président
+                    <b>{{membre.nom}} {{membre.prenom}}</b><br>
+                   {{membre.detail}}
                   </p>
                 </div>
           </div>
           <div class="part_entraineur">
               <h3>Entraîneurs Zumba & Reforcement musculaire</h3>
-                <div class="personne_e"> 
-                    <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                <div class="personne_e" *ngFor="let membre of tache_entraineur_zumba"> 
+                  <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                  <img *ngIf="membre.id!=null" src="{{membre.photo}}">
                     <p>
-                      <b>DELMARLE<br>Guillaume</b><br>
-                      Président
+                      <b>{{membre.nom}} {{membre.prenom}}</b><br>
+                       {{membre.detail}}
                     </p>
                   </div>
             </div>
@@ -112,37 +111,25 @@
   <div class="juge">
       <div class="presentation_bureau">Atque, ut Tullius ait, ut etiam ferae fame monitae plerumque ad eum locum ubi aliquando pastae sunt revertuntur, ita homines instar turbinis degressi montibus impeditis et arduis loca petivere mari confinia, per quae viis latebrosis sese convallibusque occultantes cum appeterent noctes luna etiam tum cornuta ideoque nondum solido splendore fulgente nauticos observabant quos cum in somnum sentirent effusos per ancoralia, quadrupedo gradu repentes seseque suspensis passibus iniectantes in scaphas eisdem sensim nihil opinantibus adsistebant et incendente aviditate saevitiam ne cedentium quidem ulli parcendo obtruncatis omnibus merces opimas velut viles nullis repugnantibus avertebant. haecque non diu sunt perpetrata.</div>
       <div class="membre_bureau"><h3 class="titre">Juge Gymnastique Artistique</h3>
-        <div class="personne"> 
-          <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+        <div class="personne" *ngFor="let membre of tache_juge_gym"> 
+          <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+      <img *ngIf="membre.id!=null" src="{{membre.photo}}">
           <p>
-            <b>DELMARLE Guillaume</b><br>
-            Président
+            <b>{{membre.nom}} {{membre.prenom}}</b><br>
+              {{membre.detail}}
           </p>
         </div>
-        <div class="personne"> 
-            <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-            <p>
-              <b>DELMARLE Guillaume</b><br>
-              Président
-            </p>
-          </div>
       </div>
 
       <div class="membre_bureau"><h3 class="titre">Juge Trampoline</h3>
-        <div class="personne"> 
-          <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+        <div class="personne" *ngFor="let membre of tache_juge_trampo"> 
+          <img *ngIf="membre.id==null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+      <img *ngIf="membre.id!=null" src="{{membre.photo}}">
           <p>
-            <b>DELMARLE Guillaume</b><br>
-            Président
+            <b>{{membre.nom}} {{membre.prenom}}</b><br>
+            {{membre.detail}}
           </p>
         </div>
-        <div class="personne"> 
-            <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-            <p>
-              <b>DELMARLE Guillaume</b><br>
-              Président
-            </p>
-          </div>
       </div>
   </div>
 </ng-container>

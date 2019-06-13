@@ -91,7 +91,7 @@ public class PersonneController extends MainController{
 			t.setLibelletache("bonjour");
 			Personne n = new Personne();
 			n.setNomPersonne("Vallee");
-			n.setPrenom_Personne("Ronan");
+			n.setPrenomPersonne("Ronan");
 			tache_personne tp = new tache_personne();
 			tp.setTache(t);
 			tp.setPersonne(n);
@@ -112,7 +112,7 @@ public class PersonneController extends MainController{
 		
 		Personne p = new Personne();
 		p.setNomPersonne(nom_Personne);
-		p.setPrenom_Personne(prenom_Personne);
+		p.setPrenomPersonne(prenom_Personne);
 		p.setEmailPersonne(email_Personne);
 		p.setTelephone(telephone);
 		p.setRue_Personne(rue_Personne);

@@ -18,7 +18,7 @@ export class ActualiteComponent implements OnInit {
   ngOnInit() {
    this.ArticleService.findAll().subscribe(data =>{
      this.articles = data;
-     console.log(data);
+     console.log('article',data);
    });
    
   }

@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Horaire {
 
@@ -21,6 +23,7 @@ public class Horaire {
 	private String heurefin;
 	
 	@ManyToMany(mappedBy="horaire")
+	@JsonIgnore
 	private Set<Groupe> groupe;
 	
 	public Integer getIdhoraire() {

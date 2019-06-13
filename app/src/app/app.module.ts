@@ -12,6 +12,7 @@ import { CalendrierComponent } from './component/calendrier/calendrier.component
 import { DisciplineComponent } from './component/discipline/discipline.component';
 import { ConnectComponent } from './component/connect/connect.component';
 import { FormsModule } from '@angular/forms';
+import { InscriptionComponent } from './component/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     ContactComponent,
     CalendrierComponent,
     DisciplineComponent,
-    ConnectComponent
+    ConnectComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

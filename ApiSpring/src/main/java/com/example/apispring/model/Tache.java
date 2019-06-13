@@ -56,5 +56,9 @@ public class Tache{
 	public void setPersonne(Set<tache_personne> personne) {
 		this.personne = personne;
 	}	
+	@Override
+	public String toString() {
+		return "Tache" + libelletache;
+	}
 	
 }
