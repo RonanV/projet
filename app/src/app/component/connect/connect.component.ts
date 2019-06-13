@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
 import { SearchService } from '../../service/search.service'
-import { SearchIdService } from '../../service/search-Id.service'
+import { SearchIdService } from '../../service/search-id.service'
 import { NgForm } from '@angular/forms';
 import { BrowserStack } from 'protractor/built/driverProviders';
 import { Search } from 'src/app/models/search';

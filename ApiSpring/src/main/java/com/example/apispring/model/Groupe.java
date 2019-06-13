@@ -17,6 +17,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Groupe {
@@ -46,6 +47,13 @@ public class Groupe {
 	@JoinColumn(name = "idsaison")
 	@Fetch(FetchMode.JOIN)
 	private Saison idsaison;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="groupe_personne",
+				joinColumns= {@JoinColumn(name="idpersonne")},
+				inverseJoinColumns= {@JoinColumn(name="idgroupe")})
+	@JsonIgnoreProperties("groupe")
+	private Set<Personne> personne;
 	
 	public Integer getIdgroupe() {
 		return idgroupe;
@@ -89,5 +97,19 @@ public class Groupe {
 	public void setHoraires(Set<Horaire> horaire) {
 		this.horaire = horaire;
 	}
+	public Set<Personne> getPersonne() {
+		return personne;
+	}
+	public void setPersonne(Set<Personne> personne) {
+		this.personne = personne;
+	}
+	public Saison getIdsaison() {
+		return idsaison;
+	}
+	public void setIdsaison(Saison idsaison) {
+		this.idsaison = idsaison;
+	}
+	
+	
 	
 }

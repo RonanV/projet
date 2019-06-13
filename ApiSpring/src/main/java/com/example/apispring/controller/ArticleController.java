@@ -31,7 +31,7 @@ public class ArticleController extends MainController{
 	public String addNewArticle () {
 	Personne pers = new Personne();
 		pers.setNomPersonne("Vallee");
-		pers.setPrenom_Personne("Ronan");
+		pers.setPrenomPersonne("Ronan");
 		
 		super.getPersonneRepository().save(pers);
 		Article n = new Article();
