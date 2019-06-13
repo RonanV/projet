@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Personne } from 'src/app/models/personne';
+import { SearchIdService } from 'src/app/service/search-id.service';
 import { PersonneService } from 'src/app/service/personne.service';
 
 @Component({
@@ -19,15 +19,25 @@ export class AppComponent implements OnInit {
   id:String = "";
   psw:String = "";
 
-  constructor( private router:Router, private personneService: PersonneService){
+  constructor( private router:Router, private personneService: PersonneService, private searchIdService: SearchIdService){
     
   }
 
   ngOnInit() {
-
+   this.display();
   }
 
   display(){
+    
+    if(localStorage.getItem('idpersonne') != ""){
+      this.searchIdService.findAll(localStorage.getItem('idpersonne')).subscribe(data =>{
+        console.log('data', data);
+        this.login = data['nomPersonne'] + " " + data['prenomPersonne'];
+        localStorage.setItem('idpersonne', data['idpersonne']);
+      });
+    }else{
+      document.getElementById('id01').style.display='block';
+    }
     return "none";
   }
 
@@ -49,14 +59,13 @@ export class AppComponent implements OnInit {
       this.id=f.value.uname;
       this.psw=f.value.psw;
       this.personneService.findAllPass(this.id, this.psw).subscribe(data =>{
-        console.log(data);
         this.verif = true;
         (document.getElementById('id01').style.display='none');
         this.router.navigateByUrl('/connect');
         f.reset(1);
-        this.login = "Guillaume DELMARLE";
+        this.login = data['nomPersonne'] + " " + data['prenomPersonne'];
+        localStorage.setItem('idpersonne', data['idpersonne']);
       }, erreur => {
-        console.log(erreur.error.message);
         this.verification = true;
       });
     }

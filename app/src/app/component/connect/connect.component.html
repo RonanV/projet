@@ -1,111 +1,98 @@
 <div class="contenu">
 <a (click)="display('perso')"><div class="button" ><br>
 <p>MODIFIER MES INFORMATIONS PERSONNELLES</p>
-<img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
+<img *ngIf="!perso" src="..\..\..\assets\image\down.png">
+<img *ngIf="perso" src="..\..\..\assets\image\top.png">
 </div></a>
 <div *ngIf="perso" class="detail">
-        <i>CHAQUE ADHERENT POURRA MODIFIER SES INFORMATIONS, LE INPUT VIDE SERA CACHE ET CONTIENDRA L'ID</i>
 <form>
-    <label>Nom<input type="text" name="nom" onkeyup="this.value=this.value.toUpperCase()" required/></label><br>
-    <label>Prénom<input type="text" name="prenom" required/></label><br>
-    <label>Date de naissance<input type="date" name="naissance" required/></label><br>
-    <label>Mail<input type="mail" name="mail" required/></label><br>
-    <label>Rue<input type="text" name="rue" required/></label><br>
-    <label>Code postal<input type="text" name="cp" maxlength="5" required/></label><br>
-    <label>Ville<input type="text" name="ville" required/></label><br>
-    <label>Numéro de la mère<input type="text" name="mere" maxlength="10" required/></label><br>
-    <label>Numéro du prère<input type="text" name="pere" maxlength="10" required/></label><br>
-    <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" required/></label><br>
-    <label>Numéro de licence<input type="text" name="licence" disabled/></label><br>
-    <label><input type="text" name="idpersonne"/></label><br>    
+    <label>Nom<input type="text" name="nom" value="{{info.nomPersonne}}" required/></label><br>
+    <label>Prénom<input type="text" name="prenom" value="{{info.prenomPersonne}}" required/></label><br>
+    <label>Date de naissance<input type="date" name="naissance" value="{{info.datenaissance_Personne}}" required/></label><br>
+    <label>Mail<input type="mail" name="mail" value="{{info.emailPersonne}}" required/></label><br>
+    <label>Rue<input type="text" name="rue" value="{{info.rue_Personne}}" required/></label><br>
+    <label>Code postal<input type="text" name="cp" maxlength="5" value="{{info.codepostal_Personne}}" required/></label><br>
+    <label>Ville<input type="text" name="ville" value="{{info.ville_Personne}}" required/></label><br>
+    <label>Numéro de la mère<input type="text" name="mere" maxlength="10" value="{{info.telephonemere}}" required/></label><br>
+    <label>Numéro du prère<input type="text" name="pere" maxlength="10" value="{{info.telephonepere}}" required/></label><br>
+    <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" value="{{info.telephone}}" required/></label><br>
+    <label>Numéro de licence<input type="text" name="licence" value="{{info.numlicence}}" disabled/></label><br>
+    <label><input type="text" name="idpersonne" value="{{info.idpersonne}}"/></label><br>    
     <label><input type="submit" value="Modifier mes informations"/></label><br> 
 </form>
 </div>
 
 <a (click)="display('modif_pers')"><div class="button" ><br>
     <p>MODIFIER LES INFORMATIONS D'UN ADHERENTS</p>
-    <img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
+    <img *ngIf="!modif_pers" src="..\..\..\assets\image\down.png">
+    <img *ngIf="modif_pers" src="..\..\..\assets\image\top.png">
     </div></a>
     <div *ngIf="modif_pers" class="detail">
-    <form *ngIf="result != 'coucou'">
-        <i>IL FAUDRAIT POUVOIR RECHERCHER UN ADHRENT SOIT PAR LE NOM? LE PRENOM, UNE DATE DE NAISSANCE, UN MAIL OU UN NUMERO</i>
+    <form *ngIf="result != 'coucou'" #myform="ngForm" (ngSubmit)="register(myform)" class="modal-content animate">
         <h2>Rechercher un adhérent</h2><br>
-        <label>Nom<input type="text" name="search_nom" onkeyup="this.value=this.value.toUpperCase()"/></label><br>
-        <label>Prénom<input type="text" name="search_prenom"/></label><br>
-        <label>Date de naissance<input type="date" name="search_naissance"/></label><br>
-        <label>Mail<input type="mail" name="search_mail" maxlength="10"/></label><br>
-        <label>Numéro<input type="text" name="search_num"/></label><br>
+        <label>Nom<input type="text" name="search_nom" ngModel/></label><br>
+        <label>Prénom<input type="text" name="search_prenom" ngModel/></label><br>
+        <label>Date de naissance<input type="date" name="search_naissance" ngModel/></label><br>
+        <label>Mail<input type="mail" name="search_mail" ngModel/></label><br>
+        <label>Numéro<input type="text" name="search_num" ngModel/></label><br>
         <label><input type="submit" value="Rechercher"/></label><br>
     </form>
 
-    <div class="result">
-            <i>LES RESULTATS DE LA RECHERCHE SERONT AFFICHER LA </i>
+    <div class="result" *ngIf="resultSearch1">
             <h2>Résultat(s) de la rechercher</h2><br>
-            <p>Aucun résulat</p>
-            <a (click)="modif(1)"><div class="pers_result">
-                <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-                <h3>DELMARLE Guillaume<br>
-                    <small>Trampoline 11 ans et + <br>2018/2019</small>
+            <p *ngIf="resultError">Aucun résulat</p>
+            <div *ngIf="resultSearchTrue">
+            <a *ngFor="let perso of info" (click)="modif(perso.idpersonne)"><div class="pers_result">
+                <img *ngIf="perso.idphoto === null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
+                <img *ngIf="perso.idphoto !== null" src="{{perso.idphoto.chemin_Photo}}">
+                <h3>{{perso.nomPersonne}} {{perso.prenomPersonne}}<br>
+                    <small> <br>{{perso.idsaison.libellesaison}}</small>
                 </h3>
             </div></a>
-
-            <a (click)="modif(1)"><div class="pers_result">
-                    <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-                    <h3>DELMARLE Guillaume<br>
-                        <small>Trampoline 11 ans et +<br>2018/2019</small>
-                    </h3>
-                </div></a>
-                <a (click)="modif(1)"><div class="pers_result">
-                        <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-                        <h3>DELMARLE Guillaume<br>
-                            <small>Trampoline 11 ans et +<br>2018/2019</small>
-                        </h3>
-                    </div></a>
-                    <a (click)="modif(1)"><div class="pers_result">
-                            <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-                            <h3>DELMARLE Guillaume<br>
-                                <small>Trampoline 11 ans et +<br>2018/2019</small>
-                            </h3>
-                        </div></a>
-                        <a (click)="modif(1)"><div class="pers_result">
-                                <img src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
-                                <h3>DELMARLE Guillaume<br>
-                                    <small>Trampoline 11 ans et +<br>2018/2019</small>
-                                </h3>
-                            </div></a>
+            </div>
+            
     </div>
 
 
-    <form>
+    <form *ngIf="resultadhe">
         <h2>Modifier les informations de l'adhérents</h2><br>
-        <i>APRES AVOIR CLIQUE SUR LA PERSONNE, TOUTES SES INFO S'AFFICHE ET ON PEUT LES MODIFIER</i>
-        <label>Nom<input type="text" name="nom" onkeyup="this.value=this.value.toUpperCase()" required/></label><br>
-        <label>Prénom<input type="text" name="prenom" required/></label><br>
-        <label>Date de naissance<input type="date" name="naissance" required/></label><br>
-        <label>Mail<input type="mail" name="mail" required/></label><br>
-        <label>Rue<input type="text" name="rue" required/></label><br>
-        <label>Code postal<input type="text" name="cp" maxlength="5" required/></label><br>
-        <label>Ville<input type="text" name="ville" required/></label><br>
-        <label>Numéro de la mère<input type="text" name="mere" maxlength="10" required/></label><br>
-        <label>Numéro du prère<input type="text" name="pere" maxlength="10" required/></label><br>
-        <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" required/></label><br>
-        <label>Numéro de licence<input type="text" name="licence"/></label><br>
-        <label>Rôle<select><option>Entraîneur</option></select></label><br>
-        <label>Détail<input type="text"/></label><br>
-        <label><input type="text" name="idpersonne"/></label><br>    
+        <label>Nom<input type="text" name="nom" value="{{inforesult.nomPersonne}}" required/></label><br>
+        <label>Prénom<input type="text" name="prenom" value="{{inforesult.prenomPersonne}}" required/></label><br>
+        <label>Date de naissance<input type="date" name="naissance" value="{{inforesult.datenaissance_Personne}}" required/></label><br>
+        <label>Mail<input type="mail" name="mail" value="{{inforesult.emailPersonne}}" required/></label><br>
+        <label>Rue<input type="text" name="rue" value="{{inforesult.rue_Personne}}" required/></label><br>
+        <label>Code postal<input type="text" name="cp" maxlength="5" value="{{inforesult.codepostal_Personne}}" required/></label><br>
+        <label>Ville<input type="text" name="ville" value="{{inforesult.ville_Personne}}" required/></label><br>
+        <label>Numéro de la mère<input type="text" name="mere" maxlength="10" value="{{inforesult.telephonemere}}" required/></label><br>
+        <label>Numéro du père<input type="text" name="pere" maxlength="10" value="{{inforesult.telephonepere}}" required/></label><br>
+        <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" value="{{inforesult.telephone}}" required/></label><br>
+        <label>Numéro de licence<input type="text" name="licence" value="{{inforesult.numlicence}}"/></label><br>
+        <fieldset  class="auto">
+            <legend>Rôle</legend>
+                <label>Membre du bureau<input type="text" name="bureau" value="{{bureau}}"></label><br>
+                <label>Membre du comité directeur<input type="text" name="comite" value="{{comite}}"></label><br>
+                <label>Entraîneur Gymnastique<input type="text" name="E_G" value="{{E_G}}"></label><br>
+                <label>Entraîneur Trampoline<input type="text" name="E_T" value="{{E_T}}"></label><br>
+                <label>Entraîneur Petite Enfance<input type="text" name="E_P" value="{{E_P}}"></label><br>
+                <label>Entraîneur zumba<input type="text" name="E_Z" value="{{E_Z}}"></label><br>
+                <label>Juge Gymnastique<input type="text" name="J_G" value="{{J_G}}"></label><br>
+                <label>Juge Trampoline<input type="text" name="J_T" value="{{J_T}}"></label><br>
+        </fieldset>
+        <label><input type="text" name="idpersonne" value="{{inforesult.idpersonne}}"/></label><br>    
         <label><input type="submit" value="Modifier mes informations"/></label><br> 
     </form>
     </div>
 
-=<a (click)="display('gestion_groupe')"><div class="button" ><br>
+<a (click)="display('gestion_groupe')"><div class="button" ><br>
     <p>GESTION DES GROUPES</p>
-    <img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png">
+    <img *ngIf="!gestion_groupe" src="..\..\..\assets\image\down.png">
+    <img *ngIf="gestion_groupe" src="..\..\..\assets\image\top.png">
     </div></a>
     <div *ngIf="gestion_groupe" class="detail">
         <div class="gestion_groupe">
                 <i>LORSQUE L'ON CLIQUE SUR LE BOUTON LA PARTIE INFERIEUR S'AFFICHE</i>
-            <button>Ajouter un groupe</button>
-            <div class="creat_groupe">
+            <button (click)="creat_groupe()">Ajouter un groupe</button>
+            <div class="creat_groupe" *ngIf="creat_group">
                 <form>
                     <h2>Créer un groupe</h2>
                     <label>Nom du groupe<input type="text"/></label>
