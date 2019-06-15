@@ -30,8 +30,8 @@ public class Groupe {
 	private String tache_Groupe;
 	private String limitemax;
 	private String tarif_Groupe;
-	private String anne_Min;
-	private String anne_Max;
+	private String annee_Min;
+	private String annee_Max;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idphoto")
@@ -40,8 +40,8 @@ public class Groupe {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="groupe_horaire",
-				joinColumns= {@JoinColumn(name="idhoraire")},
-				inverseJoinColumns= {@JoinColumn(name="idgroupe")})
+				joinColumns= {@JoinColumn(name="idgroupe")},
+				inverseJoinColumns= {@JoinColumn(name="idhoraire")})
 	@JsonIgnore
 	private Set<Horaire> horaire;
 	
@@ -52,8 +52,8 @@ public class Groupe {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="groupe_personne",
-				joinColumns= {@JoinColumn(name="idpersonne")},
-				inverseJoinColumns= {@JoinColumn(name="idgroupe")})
+				joinColumns= {@JoinColumn(name="idgroupe")},
+				inverseJoinColumns= {@JoinColumn(name="idpersonne")})
 	@JsonIgnoreProperties("groupe")
 	private Set<Personne> personne;
 	
@@ -87,17 +87,17 @@ public class Groupe {
 	public void setTarif_Groupe(String tarif_Groupe) {
 		this.tarif_Groupe = tarif_Groupe;
 	}
-	public String getAnne_Min() {
-		return anne_Min;
+	public String getAnnee_Min() {
+		return annee_Min;
 	}
-	public void setAnne_Min(String anne_Min) {
-		this.anne_Min = anne_Min;
+	public void setAnnee_Min(String annee_Min) {
+		this.annee_Min = annee_Min;
 	}
-	public String getAnne_Max() {
-		return anne_Max;
+	public String getAnnee_Max() {
+		return annee_Max;
 	}
-	public void setAnne_Max(String anne_Max) {
-		this.anne_Max = anne_Max;
+	public void setAnne_Max(String annee_Max) {
+		this.annee_Max = annee_Max;
 	}
 	public Photo getIdphoto() {
 		return idphoto;
