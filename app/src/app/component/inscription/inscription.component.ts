@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupeService } from '../../service/groupe.service'
 
 @Component({
   selector: 'app-inscription',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscriptionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private groupeService: GroupeService) { }
+
+  info_groupe = [];
 
   ngOnInit() {
+    this.groupeService.findAll().subscribe(data =>{
+      this.info_groupe = data;
+      console.log('groupe',data)
+   });
   }
 
 }

@@ -15,21 +15,31 @@ export class AppComponent implements OnInit {
   mdp:boolean = false;
   verif:boolean = false;
   verification:boolean = false;
-  login:String = "Se connecter";
+  log:boolean = false;
   id:String = "";
   psw:String = "";
+  login: string = "Se connecter";
+  
 
   constructor( private router:Router, private personneService: PersonneService, private searchIdService: SearchIdService){
     
   }
 
   ngOnInit() {
-   this.display();
+    console.log(localStorage.getItem('idpersonne'))
+    if(localStorage.getItem('idpersonne') != null){
+      this.searchIdService.findAll(localStorage.getItem('idpersonne')).subscribe(data =>{
+        console.log('data', data);
+        this.login = data['nomPersonne'] + " " + data['prenomPersonne'];
+        localStorage.setItem('idpersonne', data['idpersonne']);
+      });
+    }
   }
 
   display(){
-    
-    if(localStorage.getItem('idpersonne') != ""){
+    console.log(localStorage.getItem('idpersonne'))
+  
+    if(localStorage.getItem('idpersonne') != null){
       this.searchIdService.findAll(localStorage.getItem('idpersonne')).subscribe(data =>{
         console.log('data', data);
         this.login = data['nomPersonne'] + " " + data['prenomPersonne'];
@@ -39,6 +49,13 @@ export class AppComponent implements OnInit {
       document.getElementById('id01').style.display='block';
     }
     return "none";
+  }
+
+  disconnect(){
+    localStorage.removeItem('idpersonne')
+    this.router.navigate(['/'])
+    this.login = "Se connecter";
+    console.log('deconnecter')
   }
 
   register(f: NgForm) {
@@ -70,6 +87,6 @@ export class AppComponent implements OnInit {
       });
     }
   }
-  
+
 
 }

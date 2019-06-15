@@ -10,8 +10,8 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 
 const routes: Routes = [
   //{ path: 'club', component: ClubComponent }
-  { path: '', component: ClubComponent },
-  { path: 'actu', component: ActualiteComponent },
+  { path: '', component: ActualiteComponent },
+  { path: 'club', component: ClubComponent },
   { path: 'contact', component: ContactComponent},
   { path: 'calendrier', component: CalendrierComponent},
   { path: 'discipline', component: DisciplineComponent},

@@ -1,11 +1,14 @@
 <header class="menu">
-    <a routerLink="/" class="titre"><p>ETOILE DE VILLECRESNES</p></a>
   <ul class="nav">
-  <li class="mainnav"><a routerLink="/actu" class="mainnav"><p>Actualité</p></a></li>
+  <img  src="../assets\image\logo.png" height="80%;">
+  <li class="mainnav"><a routerLink="/club" class="mainnav"><p>Le club</p></a></li>
+  <li class="mainnav"><a routerLink="/" class="mainnav"><p>Actualité</p></a></li>
   <li class="mainnav"><a routerLink="/discipline" class="mainnav"><p>Disciplines Proposées</p></a></li>
   <li class="mainnav"><a routerLink="/calendrier" class="mainnav"><p>Calendrier</p></a></li>
+  <li class="mainnav"><a routerLink="/album" class="mainnav"><p>Album</p></a></li>
   <li class="mainnav"><a routerLink="/contact" class="mainnav"><p>Contact</p></a></li>
-  <li class="mainnav2"><a routerLink="/connect" class="mainnav" (click)="display();" onclick=""><p>{{ login }}</p></a></li>
+  <li *ngIf="login !== 'Se connecter'" class="mainnav3"><a class="disconnect" (click)="disconnect()" *ngIf="login !== 'Se connecter'">Se déconnecter</a><a routerLink="/connect" class="mainnav2" (click)="display();"><p>{{ login }}</p></a></li>
+  <li *ngIf="login === 'Se connecter'" class="mainnav2"><a class="mainnav2" (click)="display();"><p>{{ login }}</p></a></li>
 </ul>
 </header>
 <div class="contenu" name="contenu">

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Indexed;
 import com.example.apispring.jointure.tache_personne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -65,6 +66,7 @@ public class Personne{
 	private Set<tache_personne> tache = new HashSet<tache_personne>();
 	
 	@ManyToMany(mappedBy = "personne")
+	@JsonIgnoreProperties("personne")
 	private Set<Groupe> groupe;
 	
 	public Personne() {

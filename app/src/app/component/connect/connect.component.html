@@ -8,7 +8,7 @@
 <form>
     <label>Nom<input type="text" name="nom" value="{{info.nomPersonne}}" required/></label><br>
     <label>Prénom<input type="text" name="prenom" value="{{info.prenomPersonne}}" required/></label><br>
-    <label>Date de naissance<input type="date" name="naissance" value="{{info.datenaissance_Personne}}" required/></label><br>
+    <label>Date de naissance<input type="date" name="naissance" value="{{info.datenaissance_Personne | date:'yyyy-MM-dd'}}" required/></label><br>
     <label>Mail<input type="mail" name="mail" value="{{info.emailPersonne}}" required/></label><br>
     <label>Rue<input type="text" name="rue" value="{{info.rue_Personne}}" required/></label><br>
     <label>Code postal<input type="text" name="cp" maxlength="5" value="{{info.codepostal_Personne}}" required/></label><br>
@@ -46,7 +46,9 @@
                 <img *ngIf="perso.idphoto === null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
                 <img *ngIf="perso.idphoto !== null" src="{{perso.idphoto.chemin_Photo}}">
                 <h3>{{perso.nomPersonne}} {{perso.prenomPersonne}}<br>
-                    <small> <br>{{perso.idsaison.libellesaison}}</small>
+                  <ng-container *ngIf="info_groupe_pers.lenght === 1"><small *ngFor="let info of info_groupe_pers" >{{info.nom}} </small ></ng-container>
+                    <small *ngIf="info_groupe_pers.lenght !== 1 && info_groupe_pers.lenght !== 0">Plusieurs groupes</small >
+                    <small><br>{{perso.idsaison[perso.idsaison.length - 1].libellesaison}}</small>
                 </h3>
             </div></a>
             </div>
@@ -58,7 +60,7 @@
         <h2>Modifier les informations de l'adhérents</h2><br>
         <label>Nom<input type="text" name="nom" value="{{inforesult.nomPersonne}}" required/></label><br>
         <label>Prénom<input type="text" name="prenom" value="{{inforesult.prenomPersonne}}" required/></label><br>
-        <label>Date de naissance<input type="date" name="naissance" value="{{inforesult.datenaissance_Personne}}" required/></label><br>
+        <label>Date de naissance<input type="date" name="naissance" value="{{inforesult.datenaissance_Personne | date:'yyyy-MM-dd'}}" required/></label><br>
         <label>Mail<input type="mail" name="mail" value="{{inforesult.emailPersonne}}" required/></label><br>
         <label>Rue<input type="text" name="rue" value="{{inforesult.rue_Personne}}" required/></label><br>
         <label>Code postal<input type="text" name="cp" maxlength="5" value="{{inforesult.codepostal_Personne}}" required/></label><br>
@@ -67,6 +69,12 @@
         <label>Numéro du père<input type="text" name="pere" maxlength="10" value="{{inforesult.telephonepere}}" required/></label><br>
         <label>Numéro du praticant<input type="text" name="praticant" maxlength="10" value="{{inforesult.telephone}}" required/></label><br>
         <label>Numéro de licence<input type="text" name="licence" value="{{inforesult.numlicence}}"/></label><br>
+        <fieldset  class="auto">
+            <legend>Ses groupes</legend>
+                <ng-container *ngFor="let perso of inforesult.groupe">
+                    <label *ngFor="let groupe of info_groupe">{{perso.libellegrp}}<input type="checkbox" name="groupeidgroupe" value="{{groupe.idgroupe}}" *ngIf="groupe.idgroupe === perso.idgroupe? selected : ''"></label>
+                </ng-container>
+            </fieldset>
         <fieldset  class="auto">
             <legend>Rôle</legend>
                 <label>Membre du bureau<input type="text" name="bureau" value="{{bureau}}"></label><br>
@@ -90,7 +98,6 @@
     </div></a>
     <div *ngIf="gestion_groupe" class="detail">
         <div class="gestion_groupe">
-                <i>LORSQUE L'ON CLIQUE SUR LE BOUTON LA PARTIE INFERIEUR S'AFFICHE</i>
             <button (click)="creat_groupe()">Ajouter un groupe</button>
             <div class="creat_groupe" *ngIf="creat_group">
                 <form>
@@ -103,35 +110,25 @@
                     <label><input type="submit" value="Ajoter le groupe"/></label>
                 </form>
             </div>
-            <i>LA LISTE DES GROUPES DE LA DERNIERE SAISON S'AFFICHE</i>
+            <a *ngFor="let perso of info_groupe" (click)="modifGroupe(perso.idgroupe)">
             <div class="groupe">
-                <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
-                <h2>Trampoline 11 ans et +<br>
-                    <small>Guillaume (2 sur 20)</small><br>
+                <img *ngIf="perso.idphoto == null" src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
+                <img *ngIf="perso.idphoto != null" src="{{perso.idphoto.chemin_Photo}}">
+                <h2>{{perso.libellegrp}}<br>
+                    <small>{{perso.horaires[0].libellehoraire}}<br>Guillaume (2 sur 20)</small><br>
                 </h2>
             </div>
-            <div class="groupe">
-                    <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
-                <h2>Trampoline 11 ans et +<br>
-                    <small>Guillaume (2 sur 20)</small><br>
-                </h2>
-            </div>
-            <div class="groupe">
-                    <img src="https://www.acd-groupe.fr/galerie/tuiles/groupe.jpg">
-                    <h2>Trampoline 11 ans et +<br>
-                        <small>Guillaume (2 sur 20)</small><br>
-                    </h2>
-            </div>
-            <div class="modif_group">
-                    <form>
-                            <i>APRES AVOIR CLIQUE SUR UN GROUPE CETTE PARTIE S'AFFICHE ET ON PEUT MODIFIER LES INFO</i>
+            </a>
+            <div *ngIf="modgroupe" class="modif_group" >
+                    <form #myform="ngForm" (ngSubmit)="register_modif_groupe(myform)" class="modal-content animate" *ngFor="let info of info_groupe_modif">
                             <h2>Modifier le groupe</h2>
-                            <label>Nom du groupe<input type="text"/></label>
-                            <label>Entraîneur<select><option>-- Sélectionnez un entraîneur</option></select></label>
-                            <label>Nombre maximum de praticant<input type="number"/></label>
-                            <label>Année minumum acceptée<input type="number"/></label>
-                            <label>Année maximum acceptée<input type="number"/></label>
-                            <label><input type="submit" value="Ajoter le groupe"/></label>
+                            <label>Nom du groupe<input type="text" value="{{info.nom}}"/></label>
+                            <label>Entraîneur(s)<select multiple name="entraineur" ngModel><option value="oucou2">-- Sélectionnez un entraîneur</option><option value="coucou">-- Sélectionnez un entraîneur</option></select></label>
+                            <label>Nombre maximum de praticant<input type="number"  value="{{info.limite}}"/></label>
+                            <label>Année minumum acceptée<input type="number"  value="{{info.min}}"/></label>
+                            <label>Année maximum acceptée<input type="number"  value="{{info.max}}"/></label>
+                            <label>Tarif<input type="number"  value="{{info.tarif}}"/></label>
+                            <label><input type="submit" value="Modifier le groupe"/></label>
                     </form>
             </div>
         </div>
