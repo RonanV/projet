@@ -63,6 +63,17 @@
             Prise des vidéo et/ou photo sur les manifestations.
           </label>
     </fieldset>
+    <fieldset>
+        <legend>Les activités</legend>
+        <fieldset class="groupe" *ngFor="let info of info_groupe">
+            <legend>{{info.libellegrp}}</legend>
+              <label ><input type="radio" name="groupe">
+                <b>Horaire(s) : </b>{{info.horaires[0].libellehoraire}}<br>
+                <b>Entraîneurs(s) : </b><p></p><br>
+                <b>Tarifs : </b>{{info.tarif_Groupe}} €
+              </label>
+        </fieldset>
+    </fieldset>
     <label><input type="submit" value="Envoyer mon inscription"></label>
 </form>
 </div>

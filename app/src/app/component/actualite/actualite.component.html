@@ -1,24 +1,24 @@
   <div class="contenu">
-    <div class="actu" *ngFor="let article of articles.content">
+    <div class="actu" *ngFor="let article of articles">
       <h2>{{article.titre_article}}</h2>
       <h4>{{article.date_article | date:"dd/MM/yyyy"}}</h4>
       
      <div class="view_actu">
-      <div class="img_act" *ngIf="article.idphoto != null"> <img src="{{article.idphoto.chemin_Photo}}"></div>
+      <div class="img_act" *ngIf="article.idphoto !== null"> <img src="{{article.idphoto.chemin_Photo}}"></div>
           
-      <div class="text_actu" *ngIf="article.idphoto != null">
-          <p>
-          {{article.texte_article}}
+      <div class="text_actu" *ngIf="article.idphoto !== null" >
+          <p [innerHTML]="article.texte_article">
+        
           </p>
       </div>
-      <div class="text_actu2" *ngIf="article.idphoto == null">
-          <p>
-          {{article.texte_article}}
+      <div class="text_actu2" *ngIf="article.idphoto === null" ng-app="myApp" ng-controller="myCtrl">
+          <p ng-bind-html="myText" ng-bind="expression" [innerHTML]="article.texte_article">
+           
           </p>
       </div>
      </div>
       <div class="signature_actu">
-        {{article.idpersonne.nom_Personne}} {{article.idpersonne.prenom_Personne}}
+        {{article.idpersonne.nomPersonne}} {{article.idpersonne.prenomPersonne}}
       </div>
 
     </div>

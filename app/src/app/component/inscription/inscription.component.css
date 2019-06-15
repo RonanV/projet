@@ -60,3 +60,20 @@ div.contenu {
     width:2%;
     position: relative;
   }
+
+  .groupe{
+    display:block;
+    float:left;
+    width:40%;
+  }
+
+  .groupe label{
+    font-size: 15px;
+  }
+
+  .groupe input{
+    display:block;
+    float:left;
+    width:100%;
+    background-color:yellow;
+  }

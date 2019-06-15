@@ -3,9 +3,9 @@ import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
 import { SearchService } from '../../service/search.service'
 import { SearchIdService } from '../../service/search-id.service'
+import { GroupeService } from '../../service/groupe.service'
 import { NgForm } from '@angular/forms';
-import { BrowserStack } from 'protractor/built/driverProviders';
-import { Search } from 'src/app/models/search';
+
 
 @Component({
   selector: 'app-connect',
@@ -23,6 +23,7 @@ export class ConnectComponent implements OnInit{
   resultSearchTrue:boolean = false;
   resultadhe:boolean = false;
   creat_group:boolean = false;
+  modgroupe:boolean = false;
   bureau:String = "";
   comite:String = "";
   E_G:String = "";
@@ -36,8 +37,15 @@ export class ConnectComponent implements OnInit{
   tache = [];
   info = [];
   inforesult = [];
+  info_groupe = [];
+  info_groupe_modif = [];
+  info_groupe_pers = [];
 
-  constructor(private app:AppComponent, private router:Router, private SearchService: SearchService, private SearchIdService: SearchIdService) { }
+  constructor(private app:AppComponent, 
+    private router:Router, 
+    private SearchService: SearchService, 
+    private SearchIdService: SearchIdService,
+    private groupeService: GroupeService) { }
 
   ngOnInit() {
     localStorage.getItem('idpersonne')
@@ -45,7 +53,7 @@ export class ConnectComponent implements OnInit{
     this.SearchIdService.findAll(localStorage.getItem('idpersonne')).subscribe(data =>{
       this.info = data;
    });
-
+   this.display_groupe();
   }
 
   display(name){
@@ -75,6 +83,7 @@ export class ConnectComponent implements OnInit{
 
   register(f: NgForm) {
     let value;
+    console.log(f.value)
     if(f.value.search_nom != ""){
      value = f.value.search_nom;
     }
@@ -92,6 +101,7 @@ export class ConnectComponent implements OnInit{
      }
     this.SearchService.findAll(value).subscribe(data =>{
       this.info = data;
+      console.log('info', data)
       this.resultSearch();
     });
   }
@@ -102,6 +112,7 @@ export class ConnectComponent implements OnInit{
     if(this.info.length > 0){
       this.resultSearchTrue = true;
       this.resultadhe = false;
+      this.resultError = false;
     }else{
       this.resultError = true;
       this.resultadhe = false;
@@ -114,7 +125,22 @@ export class ConnectComponent implements OnInit{
       this.inforesult = data;
       this.resultadhe = true;
       console.log('inforesult', this.inforesult);
-      console.log(this.inforesult['tache'].length);
+      
+        let long = this.inforesult['idsaison'].length;
+        let saison = this.inforesult['idsaison'][--long]['libellesaison']
+
+        for(let j = 0; j < this.inforesult['groupe'].length; j++){
+          console.log('test')
+          for(let i = 0; i < this.info_groupe.length; i++){
+            if(this.inforesult['groupe'][j].idgroupe === this.info_groupe[i].idgroupe)
+            this.info_groupe_pers.push({
+              nom : this.inforesult['groupe'][j].libellegrp,
+              id_group : this.inforesult['groupe'][j].idgroupe
+            }) 
+          }
+        }
+      console.log('les groupes', this.info_groupe_pers)
+
         for(let j = 0; j < this.inforesult['tache'].length; j++){
           if(this.inforesult['tache'][j].tache.idtache === 1){
             this.bureau = this.inforesult['tache'][j].detail;
@@ -159,5 +185,37 @@ export class ConnectComponent implements OnInit{
       this.creat_group = true;
     }
   }
+
+  display_groupe(){
+    this.groupeService.findAll().subscribe(data =>{
+      this.info_groupe = data;
+      console.log('groupe',data)
+   });
+  }
+
+  modifGroupe(id){
+    console.log(id)
+    if(!this.modgroupe){
+      this.modgroupe = true;
+      for(let i = 0; this.info_groupe.length; i++){
+        if(this.info_groupe[i].idgroupe == id){
+          this.info_groupe_modif.push({ 
+            limite : this.info_groupe[i]['limitemax'],
+            nom : this.info_groupe[i]['libellegrp'],
+            tarif : this.info_groupe[i]['tarif_Groupe'],
+            min: this.info_groupe[i]['anne_Min'],
+            max: this.info_groupe[i]['anne_Max'],
+           });
+        }
+        break;
+      }
+      console.log('info_groupe', this.info_groupe)
+    }
+  }
+
+  register_modif_groupe(f: NgForm) {
+console.log(f.value)
+  }
+
 
 }

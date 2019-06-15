@@ -10,6 +10,12 @@
     display: block;
   }
 
+  .disconnect{
+    display:block;
+    width:100%;
+    height:20%;
+  }
+
   a{
     height: 100%;
     width:100%;
@@ -48,7 +54,7 @@
     float:left;
     display: block;
     position: relative;
-    width:75%;
+    width:100%;
     padding:0;
     position:relative;
   }
@@ -64,8 +70,15 @@
   }
 
   .nav li{
-    width:15%;
+    width:10%;
     margin-left:2%;
+  }
+
+  .nav img{
+    display:block;
+    float:left;
+    margin-left:2%;
+    margin-top:1%;
   }
 
   
@@ -79,7 +92,7 @@
     width:20%;
   }
 
-  .mainnav, .mainnav2{
+  .mainnav, .mainnav2, .mainnav3{
     display: block;
     float:left;
     color: white;
@@ -92,11 +105,20 @@
     float:right;
   }
 
+  .mainnav3{
+    float:right;
+    height:84%;
+  }
+
+  .disconnect:hover{
+    height:20%;
+  }
+
   .nav a:hover ,.titre:hover{
     height: 96%;
     border-bottom: 4px solid white;
   }
-  
+
   body {
     background-color: #FFF; 
     width:100%;
@@ -255,3 +277,8 @@ span.psw {
 }
 
 .erreur {color:red;}
+
+
+.mainnav2 p{
+padding-top:-100px;
+}
