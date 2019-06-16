@@ -1,6 +1,7 @@
 package com.example.apispring.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +34,7 @@ public class Tache{
 	private String libelletache;
 	
 	@OneToMany(mappedBy = "tache", cascade = CascadeType.ALL)
-	private Set<tache_personne> personne = new HashSet<tache_personne>();
+	private Collection<tache_personne> personne = new HashSet<tache_personne>();
 	
 	public Tache() {
 		super();
@@ -50,10 +51,10 @@ public class Tache{
 	public void setLibelletache(String libelletache) {
 		this.libelletache = libelletache;
 	}
-	public Set<tache_personne> getPersonne() {
+	public Collection<tache_personne> getPersonne() {
 		return personne;
 	}
-	public void setPersonne(Set<tache_personne> personne) {
+	public void setPersonne(Collection<tache_personne> personne) {
 		this.personne = personne;
 	}	
 	@Override

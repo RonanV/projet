@@ -1,12 +1,18 @@
 package com.example.apispring.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,25 +33,44 @@ public class ArticleController extends MainController{
 	public long count() {
 		return super.getArticleRepository().count();
 	}
-	@GetMapping(path="/add")
-	public String addNewArticle () {
-	Personne pers = new Personne();
-		pers.setNomPersonne("Vallee");
-		pers.setPrenomPersonne("Ronan");
+	@PostMapping(path="/add")
+	public String addNewArticle (@RequestParam String texte_article, @RequestParam String titre_article, @RequestParam String nomPersonne, @RequestParam String prenomPersonne) {
 		
-		super.getPersonneRepository().save(pers);
+		Personne pers = super.getPersonneRepository().findByNomPersonneAndPrenomPersonne(nomPersonne, prenomPersonne);
+		
 		Article n = new Article();
-		n.setTexte_article("Bonjour");
-		n.setTitre_article("c'est moi");
+		n.setTexte_article(texte_article);
+		n.setTitre_article(titre_article);
 		n.setIdpersonne(pers);
 		super.getArticleRepository().save(n);
 		
 		return "Saved";
 	}
 	
-	@GetMapping(path="/all")
+	@GetMapping(path="")
 	public Page<Article> getAllArticles(@RequestParam(required=false) Integer size, @RequestParam(required = false) String sort) {
 		Pageable page = PageRequest.of(0, 20, Sort.by("idpersonne").descending());
 		return super.getArticleRepository().findAll(page);
+	}
+	@PutMapping(path="/{id}")
+	public String ModifArticle(@PathVariable Integer id,@RequestParam String texte_article, @RequestParam String titre_article, @RequestParam String nomPersonne, @RequestParam String prenomPersonne) {
+		Personne pers = super.getPersonneRepository().findByNomPersonneAndPrenomPersonne(nomPersonne, prenomPersonne);
+		Optional<Article> art = super.getArticleRepository().findById(id);
+		
+		art.get().setTexte_article(texte_article);
+		art.get().setTitre_article(titre_article);
+		art.get().setIdpersonne(pers);
+		
+		super.getArticleRepository().save(art.get());
+		return "Saved";
+		
+	}
+	@DeleteMapping(path="/{id}")
+	public String deleteArticle(@PathVariable Integer id) {
+		Optional<Article> art = super.getArticleRepository().findById(id);
+		
+		super.getArticleRepository().delete(art.get());
+		return "Saved";
+		
 	}
 }

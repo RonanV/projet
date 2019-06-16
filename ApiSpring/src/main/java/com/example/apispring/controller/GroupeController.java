@@ -15,7 +15,7 @@ import com.example.apispring.model.Tache;
 @RequestMapping(path= "/groupes")
 public class GroupeController extends MainController{
 
-	@GetMapping(path="/all")
+	@GetMapping(path="")
 	public Iterable<Groupe> getAllGroupes() {
 		return super.getGroupeRepository().findAll();
 	}

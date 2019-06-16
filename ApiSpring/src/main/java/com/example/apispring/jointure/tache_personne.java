@@ -72,7 +72,6 @@ public class tache_personne {
 	}
 	public void setDetail(String detail) {
 		this.detail = detail;
-	}
-	
+	}	
 	
 }

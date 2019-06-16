@@ -6,8 +6,12 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,13 +31,13 @@ public class PersonneController extends MainController{
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@GetMapping(path="/all")
+	@GetMapping(path="")
 	public Iterable<Personne> getAllUsers() {
 		return super.getPersonneRepository().findAll();
 	}
 	
 	@GetMapping(path="/{id}")
-	public  Optional<Personne> getByid(@RequestParam Integer id) {
+	public  Optional<Personne> getByid(@PathVariable Integer id) {
 		return super.getPersonneRepository().findById(id);
 	}
 	@GetMapping(path="/search")
@@ -85,13 +89,17 @@ public class PersonneController extends MainController{
 		}
 		throw new InvalidDataException("Erreur lors de la recuperation des informations utilisateurs");		
 	}
+	
 	@GetMapping(path="/add")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String addNewPersonne () {
 			Tache t = new Tache();
 			t.setLibelletache("bonjour");
 			Personne n = new Personne();
 			n.setNomPersonne("Vallee");
 			n.setPrenomPersonne("Ronan");
+			n.setPassword(BCryptPasswordEncoder("ronan"));
+			n.setLoginPersonne("ValleeRonan78");
 			tache_personne tp = new tache_personne();
 			tp.setTache(t);
 			tp.setPersonne(n);
@@ -104,6 +112,12 @@ public class PersonneController extends MainController{
 						
 			return "Saved";
 		}
+	private String BCryptPasswordEncoder(String string) {
+		PasswordEncoder crypt = new BCryptPasswordEncoder();
+		String encodepassword = crypt.encode(string);
+		return encodepassword;
+	}
+
 	@GetMapping(path="/add2")
 	public String addnewmembre(@RequestParam String nom_Personne, @RequestParam String prenom_Personne, 
 			@RequestParam String email_Personne, @RequestParam String telephone,

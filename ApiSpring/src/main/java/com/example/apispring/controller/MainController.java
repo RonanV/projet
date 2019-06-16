@@ -29,6 +29,7 @@ import com.example.apispring.model.Article;
 import com.example.apispring.model.Droit;
 import com.example.apispring.model.Personne;
 import com.example.apispring.model.Tache;
+import com.example.apispring.repository.AlbumRepository;
 import com.example.apispring.repository.ArticleRepository;
 import com.example.apispring.repository.DroitRepository;
 import com.example.apispring.repository.GroupeRepository;
@@ -62,6 +63,9 @@ public class MainController {
 	
 	@Autowired
 	private GroupeRepository groupeRepository;
+	
+	@Autowired 
+	private AlbumRepository albumRepository;
 
 
 	public ArticleRepository getArticleRepository() {
@@ -105,6 +109,14 @@ public class MainController {
 
 	public void setGroupeRepository(GroupeRepository groupeRepository) {
 		this.groupeRepository = groupeRepository;
+	}
+
+	public AlbumRepository getAlbumRepository() {
+		return albumRepository;
+	}
+
+	public void setAlbumRepository(AlbumRepository albumRepository) {
+		this.albumRepository = albumRepository;
 	}
 	
 

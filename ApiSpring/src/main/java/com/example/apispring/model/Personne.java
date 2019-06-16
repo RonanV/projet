@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,10 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.transaction.Transactional;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Indexed;
 
 import com.example.apispring.jointure.tache_personne;
@@ -37,7 +39,8 @@ public class Personne{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idpersonne;
-
+	@Column(unique=true)
+	private String loginPersonne;
 	private String nomPersonne;
 	private String prenomPersonne;
 	private String telephone;
@@ -62,8 +65,8 @@ public class Personne{
 	@ManyToMany(mappedBy="personne")
 	private Set<Saison> idsaison;
 	
-	@OneToMany(mappedBy = "personne", cascade = CascadeType.ALL)
-	private Set<tache_personne> tache = new HashSet<tache_personne>();
+	@OneToMany(mappedBy = "personne", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	private Collection<tache_personne> tache = new HashSet<tache_personne>();
 	
 	@ManyToMany(mappedBy = "personne")
 	@JsonIgnoreProperties("personne")
@@ -72,11 +75,30 @@ public class Personne{
 	public Personne() {
 		super();
 	}
+	
+
+
+
+	public Personne(String loginPersonne, String password) {
+		this.loginPersonne = loginPersonne;
+		this.password = password;
+	}
+
+	public Personne(Personne personne) {
+	}
+
 	public Integer getIdpersonne() {
 		return idpersonne;
 	}
 	public void setIdpersonne(Integer idpersonne) {
 		this.idpersonne = idpersonne;
+	}
+	
+	public String getLoginPersonne() {
+		return loginPersonne;
+	}
+	public void setLoginPersonne(String loginPersonne) {
+		this.loginPersonne = loginPersonne;
 	}
 	public String getNomPersonne() {
 		return nomPersonne;
@@ -156,10 +178,10 @@ public class Personne{
 	public void setIdsaison(Set<Saison> idsaison) {
 		this.idsaison = idsaison;
 	}
-	public Set<tache_personne> getTache() {
+	public Collection<tache_personne> getTache() {
 		return tache;
 	}
-	public void setTache(Set<tache_personne> tache) {
+	public void setTache(Collection<tache_personne> tache) {
 		this.tache = tache;
 	}
 	public Photo getIdphoto() {
@@ -169,7 +191,7 @@ public class Personne{
 		this.idphoto = idphoto;
 	}
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
