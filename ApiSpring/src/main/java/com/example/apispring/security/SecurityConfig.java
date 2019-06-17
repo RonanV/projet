@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.apispring.controller.MainController;
+import com.example.apispring.redirection.SuccessHandlerRedirection;
 import com.example.apispring.service.CustomUserDetailsService;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -30,15 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.userDetailsService(userDetailsService)
 				.passwordEncoder(getPasswordEncoder());
 				
-		}
-	
+	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/personnes").permitAll()
-		.and()
-		.authorizeRequests().antMatchers("/personnes").permitAll()
+		http.authorizeRequests().antMatchers("/articles").permitAll()
 		.and()
 			.formLogin()
+				.successHandler(new SuccessHandlerRedirection())
 		.and()
 			.logout()
 		.and()

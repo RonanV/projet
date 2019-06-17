@@ -32,6 +32,7 @@ public class PersonneController extends MainController{
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@GetMapping(path="")
+	@PreAuthorize("hasRole('USER')")
 	public Iterable<Personne> getAllUsers() {
 		return super.getPersonneRepository().findAll();
 	}
@@ -91,15 +92,14 @@ public class PersonneController extends MainController{
 	}
 	
 	@GetMapping(path="/add")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public String addNewPersonne () {
 			Tache t = new Tache();
-			t.setLibelletache("bonjour");
+			t.setLibelletache("ROLE_ADMIN");
 			Personne n = new Personne();
 			n.setNomPersonne("Vallee");
 			n.setPrenomPersonne("Ronan");
-			n.setPassword(BCryptPasswordEncoder("ronan"));
-			n.setLoginPersonne("ValleeRonan78");
+			n.setPassword(BCryptPasswordEncoder("1234"));
+			n.setNumlicence("658945");
 			tache_personne tp = new tache_personne();
 			tp.setTache(t);
 			tp.setPersonne(n);

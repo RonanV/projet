@@ -39,8 +39,7 @@ public class Personne{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idpersonne;
-	@Column(unique=true)
-	private String loginPersonne;
+	
 	private String nomPersonne;
 	private String prenomPersonne;
 	private String telephone;
@@ -51,6 +50,7 @@ public class Personne{
 	private String telephonepere;
 	private String telephonemere;
 	private Date datenaissance_Personne;
+	@Column(unique=true)
 	private String numlicence;
 	private String password;
 	
@@ -77,10 +77,8 @@ public class Personne{
 	}
 	
 
-
-
-	public Personne(String loginPersonne, String password) {
-		this.loginPersonne = loginPersonne;
+	public Personne(String numlicence, String password) {
+		this.numlicence = numlicence;
 		this.password = password;
 	}
 
@@ -94,12 +92,6 @@ public class Personne{
 		this.idpersonne = idpersonne;
 	}
 	
-	public String getLoginPersonne() {
-		return loginPersonne;
-	}
-	public void setLoginPersonne(String loginPersonne) {
-		this.loginPersonne = loginPersonne;
-	}
 	public String getNomPersonne() {
 		return nomPersonne;
 	}

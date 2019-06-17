@@ -16,5 +16,4 @@ public interface PersonneRepository extends CrudRepository<Personne, Integer>{
 			String prenomPersonne, String emailPersonne);
 	Personne findByNomPersonneAndPrenomPersonne(String nomPersonne, String prenomPersonne);
 	
-	Personne findByLoginPersonne(String loginPersonne);
 }

@@ -11,7 +11,7 @@ export class ArticleServiceService {
   private urlArticle: string;
 
   constructor(private http: HttpClient) { 
-    this.urlArticle = 'http://localhost:8080/articles/all'
+    this.urlArticle = 'https://localhost:443/articles'
   }
 
   public findAll(): Observable<Article[]> {

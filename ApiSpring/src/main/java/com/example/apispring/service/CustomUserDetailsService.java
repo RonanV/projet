@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Personne personne = personneRepository.findByLoginPersonne(username);
+		Personne personne = personneRepository.findByNumlicence(username);
 		if(personne == null)
 		{
 			throw new InvalidDataException("Cette utilisateur n'existe pas " + username);
@@ -40,7 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 					.map(role -> new SimpleGrantedAuthority(role.getTache().getLibelletache()))
 					.collect(Collectors.toList());
 			logger.error(authorityList + " role");
-			return new User(personne.getLoginPersonne(),personne.getPassword(), authorityList);
+			return new User(personne.getNumlicence(),personne.getPassword(), authorityList);
 		}
 	}
 	

@@ -27,7 +27,7 @@ public class CustomUserDetails extends Personne implements UserDetails{
 	}
 
 	public String getUsername() {
-		return super.getLoginPersonne();
+		return super.getNumlicence();
 	}
 	public String getPassword() {
 		return super.getPassword();
