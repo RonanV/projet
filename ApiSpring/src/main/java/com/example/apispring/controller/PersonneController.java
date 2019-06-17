@@ -25,7 +25,7 @@ import com.example.apispring.repository.PersonneRepository;
 import com.example.apispring.repository.TacheRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 @RequestMapping(path= "/personnes")
 public class PersonneController extends MainController{
 

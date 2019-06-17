@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.apispring.model.Album;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 @RequestMapping(path= "/album")
 public class AlbumController extends MainController{
 

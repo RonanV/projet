@@ -12,8 +12,8 @@ export class PersonneService {
   private urlPersonne2: string;
 
   constructor(private http: HttpClient) { 
-    this.urlPersonne = 'http://localhost:8080/personnes/all'
-    this.urlPersonne2 = 'http://localhost:8080/personnes/verif?numero='
+    this.urlPersonne = 'https://localhost:8080/personnes/all'
+    this.urlPersonne2 = 'https://localhost:8080/personnes/verif?numero='
   }
 
   public findAll(): Observable<Personne[]> {
@@ -25,7 +25,7 @@ export class PersonneService {
   }
 
   public findAllPass(user, pass): Observable<Personne[]> {
-    this.urlPersonne2 = 'http://localhost:8080/personnes/verif?numero=' + user + "&pass=" + pass;
+    this.urlPersonne2 = 'https://localhost:3401/personnes/verif?numero=' + user + "&pass=" + pass;
     return this.http.get<Personne[]>(this.urlPersonne2);
   }
 

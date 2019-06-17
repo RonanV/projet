@@ -11,7 +11,7 @@ import com.example.apispring.model.Groupe;
 import com.example.apispring.model.Tache;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 @RequestMapping(path= "/groupes")
 public class GroupeController extends MainController{
 
