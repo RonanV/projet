@@ -1,11 +1,13 @@
 package com.example.apispring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.apispring.model.Groupe;
 import com.example.apispring.model.Tache;
@@ -25,4 +27,10 @@ public class GroupeController extends MainController{
 		
 		return super.getGroupeRepository().findAllGroupe();
 	}
+
+	@GetMapping(path="/{id}")
+	public  Optional<Groupe> getByid(@RequestParam Integer id) {
+		return super.getGroupeRepository().findById(id);
+	}
+
 }

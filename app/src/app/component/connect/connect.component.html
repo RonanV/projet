@@ -23,7 +23,7 @@
 </div>
 
 <a (click)="display('modif_pers')"><div class="button" ><br>
-    <p>MODIFIER LES INFORMATIONS D'UN ADHERENTS</p>
+    <p>MODIFIER LES INFORMATIONS D'UN ADHERENT</p>
     <img *ngIf="!modif_pers" src="..\..\..\assets\image\down.png">
     <img *ngIf="modif_pers" src="..\..\..\assets\image\top.png">
     </div></a>
@@ -46,8 +46,8 @@
                 <img *ngIf="perso.idphoto === null" src="http://prono.club/wp-content/uploads/2019/03/31584-full.png">
                 <img *ngIf="perso.idphoto !== null" src="{{perso.idphoto.chemin_Photo}}">
                 <h3>{{perso.nomPersonne}} {{perso.prenomPersonne}}<br>
-                  <ng-container *ngIf="info_groupe_pers.lenght === 1"><small *ngFor="let info of info_groupe_pers" >{{info.nom}} </small ></ng-container>
-                    <small *ngIf="info_groupe_pers.lenght !== 1 && info_groupe_pers.lenght !== 0">Plusieurs groupes</small >
+                  <ng-container *ngIf="info_groupe_pers.length === 1"><small *ngFor="let info of info_groupe_pers" >{{info.nom}} </small ></ng-container>
+                    <small *ngIf="info_groupe_pers.length !== 1 && info_groupe_pers.length !== 0">Plusieurs groupes</small >
                     <small><br>{{perso.idsaison[perso.idsaison.length - 1].libellesaison}}</small>
                 </h3>
             </div></a>
@@ -120,7 +120,7 @@
             </div>
             </a>
             <div *ngIf="modgroupe" class="modif_group" >
-                    <form #myform="ngForm" (ngSubmit)="register_modif_groupe(myform)" class="modal-content animate" *ngFor="let info of info_groupe_modif">
+                    <form #myform="ngForm" (ngSubmit)="register_modif_groupe(myform)" class="modal-content animate" *ngFor="let info of info_groupe_id">
                             <h2>Modifier le groupe</h2>
                             <label>Nom du groupe<input type="text" value="{{info.nom}}"/></label>
                             <label>Entraîneur(s)<select multiple name="entraineur" ngModel><option value="oucou2">-- Sélectionnez un entraîneur</option><option value="coucou">-- Sélectionnez un entraîneur</option></select></label>

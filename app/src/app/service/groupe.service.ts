@@ -19,6 +19,11 @@ export class GroupeService {
     return this.http.get<Groupe[]>(this.urlGroupe);
   }
 
+  public findAllById(id): Observable<Groupe[]> {
+    return this.http.get<Groupe[]>('http://localhost:8080/groupes/id?id=' + id);
+  }
+
+
   public save(groupe: Groupe){
     return this.http.post<Groupe>(this.urlGroupe, groupe);
   }

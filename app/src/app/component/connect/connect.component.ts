@@ -40,6 +40,7 @@ export class ConnectComponent implements OnInit{
   info_groupe = [];
   info_groupe_modif = [];
   info_groupe_pers = [];
+  info_groupe_id = [];
 
   constructor(private app:AppComponent, 
     private router:Router, 
@@ -75,6 +76,7 @@ export class ConnectComponent implements OnInit{
     if(name=="gestion_groupe"){
       if(this.gestion_groupe){
       this.gestion_groupe = false;
+      this.modgroupe = false;
       }else{
       this.gestion_groupe = true;
       }
@@ -109,6 +111,22 @@ export class ConnectComponent implements OnInit{
   resultSearch(){
     console.log('info_result', this.info)
     this.resultSearch1 = true;
+
+    for(let j = 0; j < this.info.length; j++){
+      console.log('test')
+      for(let k = 0; k < this.info[j]['groupe'].length; k++){
+        /* if(this.inforesult['groupe'][j].idgroupe === this.info_groupe[j].idgroupe) */
+        this.info_groupe_pers.push({
+          nom : this.info[j]['groupe'][k].libellegrp,
+          id_group : this.info[j]['groupe'][k].idgroupe
+        }) ;
+      }
+      this.info_groupe_pers.push({
+        id : this.info[j].idpersonne
+      }) ;
+    }
+  console.log('les groupes', this.info_groupe_pers)
+
     if(this.info.length > 0){
       this.resultSearchTrue = true;
       this.resultadhe = false;
@@ -117,6 +135,7 @@ export class ConnectComponent implements OnInit{
       this.resultError = true;
       this.resultadhe = false;
     }
+
   }
 
   modif(id){
@@ -128,18 +147,6 @@ export class ConnectComponent implements OnInit{
       
         let long = this.inforesult['idsaison'].length;
         let saison = this.inforesult['idsaison'][--long]['libellesaison']
-
-        for(let j = 0; j < this.inforesult['groupe'].length; j++){
-          console.log('test')
-          for(let i = 0; i < this.info_groupe.length; i++){
-            if(this.inforesult['groupe'][j].idgroupe === this.info_groupe[i].idgroupe)
-            this.info_groupe_pers.push({
-              nom : this.inforesult['groupe'][j].libellegrp,
-              id_group : this.inforesult['groupe'][j].idgroupe
-            }) 
-          }
-        }
-      console.log('les groupes', this.info_groupe_pers)
 
         for(let j = 0; j < this.inforesult['tache'].length; j++){
           if(this.inforesult['tache'][j].tache.idtache === 1){
@@ -195,23 +202,24 @@ export class ConnectComponent implements OnInit{
 
   modifGroupe(id){
     console.log(id)
+    
     if(!this.modgroupe){
       this.modgroupe = true;
-      for(let i = 0; this.info_groupe.length; i++){
-        if(this.info_groupe[i].idgroupe == id){
-          this.info_groupe_modif.push({ 
-            limite : this.info_groupe[i]['limitemax'],
-            nom : this.info_groupe[i]['libellegrp'],
-            tarif : this.info_groupe[i]['tarif_Groupe'],
-            min: this.info_groupe[i]['anne_Min'],
-            max: this.info_groupe[i]['anne_Max'],
-           });
-        }
-        break;
-      }
-      console.log('info_groupe', this.info_groupe)
     }
-  }
+      this.groupeService.findAllById(id).subscribe(data =>{
+        this.info_groupe_modif = data;
+        console.log('groupebyId',data)
+     }); this.info_groupe_id = [];
+          this.info_groupe_id.push({ 
+            limite : this.info_groupe_modif['limitemax'],
+            nom : this.info_groupe_modif['libellegrp'],
+            tarif : this.info_groupe_modif['tarif_Groupe'],
+            min: this.info_groupe_modif['anne_Min'],
+            max: this.info_groupe_modif['anne_Max'],
+           });
+      console.log('info_groupe_id', this.info_groupe_id)
+    }
+  
 
   register_modif_groupe(f: NgForm) {
 console.log(f.value)
