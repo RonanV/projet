@@ -34,16 +34,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/personnes/verif").permitAll()
+		http.authorizeRequests().antMatchers("/personnes").permitAll()
 		.and()
 			.formLogin()
-				.successHandler(new SuccessHandlerRedirection())
+				//.successHandler(new SuccessHandlerRedirection())
 		.and()
 			.logout()
 		.and()
 			.authorizeRequests().anyRequest().authenticated()
 		.and()
-			.httpBasic();			
+			.httpBasic()
+		.and()
+			.cors();
 		
 	}
 	

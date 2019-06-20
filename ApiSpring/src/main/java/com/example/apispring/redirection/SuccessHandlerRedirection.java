@@ -17,7 +17,7 @@ public class SuccessHandlerRedirection implements AuthenticationSuccessHandler{
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		String url = "http://localhost:4200";
+		String url = "https://localhost:4200/connect";
 		
 		try{
 			redirectstrategy.sendRedirect(request, response, url);

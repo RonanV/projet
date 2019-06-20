@@ -9,13 +9,20 @@ import { Observable } from 'rxjs';
 export class ArticleServiceService {
 
   private urlArticle: string;
-
+  
   constructor(private http: HttpClient) { 
-    this.urlArticle = 'https://localhost:3401/articles'
+    this.urlArticle = 'http://localhost:3401/articles'
   }
 
   public findAll(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.urlArticle);
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic MTIzNDoxMjM0');
+     /* headers.set('ContentType', 'application/json');
+      headers.set('Accept', 'application/json');
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Access-Control-Allow-Methods','POST, GET, OPTIONS, DELETE, PUT');*/
+    
+      return this.http.get<Article[]>(this.urlArticle,{headers:headers})
   }
 
   public save(article: Article){
