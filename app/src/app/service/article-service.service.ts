@@ -16,7 +16,9 @@ export class ArticleServiceService {
 
   public findAll(): Observable<Article[]> {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Basic MTIzNDoxMjM0');
+    var username = "1234";
+    var password = "1234";
+    headers = headers.set("Authorization", "Basic " + btoa(username + ':' +password));
      /* headers.set('ContentType', 'application/json');
       headers.set('Accept', 'application/json');
       headers.set('Access-Control-Allow-Origin', '*');
