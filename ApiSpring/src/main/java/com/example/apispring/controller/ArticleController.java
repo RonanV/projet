@@ -1,5 +1,7 @@
 package com.example.apispring.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,11 +30,9 @@ public class ArticleController extends MainController{
 		return super.getArticleRepository().count();
 	}
 	@GetMapping(path="/add")
-	public String addNewArticle () {
+	public boolean addNewArticle () {
 	Personne pers = new Personne();
-		pers.setNomPersonne("Vallee");
-		pers.setPrenomPersonne("Ronan");
-		
+
 		super.getPersonneRepository().save(pers);
 		Article n = new Article();
 		n.setTexte_article("Bonjour");
@@ -40,9 +40,14 @@ public class ArticleController extends MainController{
 		n.setIdpersonne(pers);
 		super.getArticleRepository().save(n);
 		
-		return "Saved";
+		return true;
 	}
-	
+
+	@GetMapping(path="/{id}")
+	public  Optional<Article> getByid(@RequestParam Integer id) {
+		return super.getArticleRepository().findById(id);
+	}
+		
 	@GetMapping(path="/all")
 	public Page<Article> getAllArticles(@RequestParam(required=false) Integer size, @RequestParam(required = false) String sort) {
 		Pageable page = PageRequest.of(0, 20, Sort.by("idpersonne").descending());

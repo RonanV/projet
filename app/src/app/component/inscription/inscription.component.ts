@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupeService } from '../../service/groupe.service'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-inscription',
@@ -17,6 +18,10 @@ export class InscriptionComponent implements OnInit {
       this.info_groupe = data;
       console.log('groupe',data)
    });
+  }
+
+  register_add_inscrit(f: NgForm) {
+    console.log('add', f.value)
   }
 
 }

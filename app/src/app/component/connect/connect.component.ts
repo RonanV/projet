@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SearchService } from '../../service/search.service'
 import { SearchIdService } from '../../service/search-id.service'
 import { GroupeService } from '../../service/groupe.service'
+import { ArticleServiceService } from '../../service/article-service.service' 
 import { NgForm } from '@angular/forms';
 
 
@@ -16,14 +17,18 @@ export class ConnectComponent implements OnInit{
   perso:boolean = false;
   modif_pers:boolean = false;
   gestion_groupe:boolean = false;
+  add_article:boolean = false;
+  gestion_article:boolean = false;
   result:String = "";
   chemin_Photo:String= "";
   resultError:boolean = false;
   resultSearch1:boolean = false;
   resultSearchTrue:boolean = false;
+  inscription:boolean = false;
   resultadhe:boolean = false;
   creat_group:boolean = false;
   modgroupe:boolean = false;
+  modif_article:boolean = false;
   bureau:String = "";
   comite:String = "";
   E_G:String = "";
@@ -41,12 +46,16 @@ export class ConnectComponent implements OnInit{
   info_groupe_modif = [];
   info_groupe_pers = [];
   info_groupe_id = [];
+  info_article_id = [];
+  info_article_modif = [];
+  articles: any;
 
   constructor(private app:AppComponent, 
     private router:Router, 
     private SearchService: SearchService, 
     private SearchIdService: SearchIdService,
-    private groupeService: GroupeService) { }
+    private groupeService: GroupeService,
+    private ArticleService:  ArticleServiceService) { }
 
   ngOnInit() {
     localStorage.getItem('idpersonne')
@@ -79,6 +88,31 @@ export class ConnectComponent implements OnInit{
       this.modgroupe = false;
       }else{
       this.gestion_groupe = true;
+      }
+    }
+    if(name=="add_article"){
+      if(this.add_article){
+      this.add_article = false;
+      }else{
+      this.add_article = true;
+      }
+    }
+    if(name=="gestion_article"){
+      if(this.gestion_article){
+      this.gestion_article = false;
+      }else{
+      this.gestion_article = true;
+      this.ArticleService.findAll().subscribe(data =>{
+        this.articles = data['content'];
+        console.log('articles', this.articles)
+      });
+      }
+    }
+    if(name=="inscription"){
+      if(this.inscription){
+      this.inscription = false;
+      }else{
+      this.inscription = true;
       }
     }
   }
@@ -222,7 +256,47 @@ export class ConnectComponent implements OnInit{
   
 
   register_modif_groupe(f: NgForm) {
-console.log(f.value)
+    console.log('modif_group',f.value);
+  }
+
+  register_creat_groupe(f: NgForm) {
+    console.log('creat_groupe', f.value);
+  }
+
+  register_create_article(f: NgForm){
+    console.log('create_article',f.value);
+  }
+
+  register_update_article(f: NgForm){
+    console.log('update_article',f.value);
+  }
+
+  register_update_user(f: NgForm) {
+    console.log('update_user', f.value);
+  }
+
+  register_update_user_search(f: NgForm) {
+    console.log('update_user_search', f.value)
+  }
+
+  modifArticle(id){
+    this.modif_article = true;
+    this.ArticleService.findAllById(id).subscribe(data =>{
+      this.info_article_id = [];
+        this.info_article_id.push({ 
+          date : data['date_article'],
+          text : data['texte_article'],
+          titre_article : data['titre_article'],
+          id : data['idarticle']
+         });
+         console.log('data', data)
+         console.log('info_article_id', this.info_article_id)
+   }); 
+  
+  }
+
+  inscrit(){
+    console.log('test')
   }
 
 

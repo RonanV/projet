@@ -1,65 +1,65 @@
 <div class="contenu">
-<form>
+<form #myform="ngForm" (ngSubmit)="register_add_inscrit(myform)">
     <fieldset>
         <legend>Renseignez les informations du pratiquant</legend>
         
-          <label>Nom de famille *<input type="text" required></label>
-          <label>Prénom *<input type="text" required></label>
-          <label>Sexe *<select><option></option><option>F</option><option>M</option></select></label>
-          <label>Date de naissance *<input type="date" required></label>
-          <label>Numéro de téléphone<input type="text"></label>
+          <label>Nom de famille *<input type="text" name="nom_inscrit" ngModel required></label>
+          <label>Prénom *<input type="text" name="prenom_inscrit" ngModel required></label>
+          <label>Sexe *<select name="sexe" ngModel required><option></option><option>F</option><option>M</option></select></label>
+          <label>Date de naissance *<input type="date" name="naissance" ngModel required></label>
+          <label>Numéro de téléphone<input type="text" name="num_lic" ngModel></label>
     </fieldset>
     <fieldset>
         <legend>Renseignez les informations du responsable légal</legend>
         
-          <label>Nom du responsable légal *<input type="text" required></label>
-          <label>Adresse *<input type="text" required></label>
-          <label>Code Postal *<input type="text" required></label>
-          <label>Ville *<input type="text" required></label>
-          <label>Numéro de téléphone père ou Responsable légal*<input type="text" required></label>
-          <label>Numéro de téléphone mère *<input type="text" required></label>
-          <label>Adresse mail *<input type="mail" required></label>
+          <label>Nom du responsable légal *<input type="text" name="nom_parent" ngModel required></label>
+          <label>Adresse *<input type="text" name="adresse" ngModel required></label>
+          <label>Code Postal *<input type="text" name="cp" ngModel required></label>
+          <label>Ville *<input type="text" name="ville" ngModel required></label>
+          <label>Numéro de téléphone père ou Responsable légal*<input type="text" name="num_p" ngModel required></label>
+          <label>Numéro de téléphone mère<input type="text" name="num_m" ngModel></label>
+          <label>Adresse mail *<input type="mail" name="mail" ngModel required></label>
     </fieldset>
     <fieldset  class="auto">
         <legend>Autorisation parentals</legend>
         Cochez si OUI :<br>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="photo" ngModel>
             Le Club de l’Etoile de Villecresnes à utiliser des photos et vidéos sur lesquelles apparaît mon enfant dans un but de communication de promotion du club et du sport
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="rentre" ngModel>
             Mon fils/ma fille à rentrer seul(e) après les entraînements et/ou après les compétitions (si elles ont lieu à Villecresnes)<br><font color="red"> Si non : je m'engage à récuperer mon fils/ma fille à l'intérieur du gymnase</font>
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="urgence" ngModel>
             Le transport aux urgences si nécessaire
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="intervention" ngModel>
             A faire pratiquer une intervention médicale en cas de besoin
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="vehicule" ngModel>
             Le transport de mon enfant dans un véhicule privé (ou autocars) et dégage l’association l’Etoile de Villecresnes de toute responsabilité pour les compétitions à l’extérieur
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="competition" ngModel>
             Je peux éventuellement convoyer avec mon véhicule personnel des gymnastes pour les compétitions à l’extérieur
           </label>
           <br>
           Je souhaite participer à la vie associative du club :
           <br>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="install" ngModel>
             Aide hebdomadaire pour les installations et rangements des agrès
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="organisation" ngModel>
             Aide à l'organisation des compétitions internes (buvette, installation, rangement, …)
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="officiel" ngModel>
             Aide sur des tâches d’officiels.
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="ade_licence" ngModel>
             Aide pour les inscriptions des licences
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="aide_affichage" ngModel>
             Aide pour centraliser et afficher les résultats des tournois, compétitions et différentes manifestations.
           </label>
-          <label><input type="checkbox">
+          <label><input type="checkbox" name="aide_photo" ngModel>
             Prise des vidéo et/ou photo sur les manifestations.
           </label>
     </fieldset>
@@ -67,9 +67,9 @@
         <legend>Les activités</legend>
         <fieldset class="groupe" *ngFor="let info of info_groupe">
             <legend>{{info.libellegrp}}</legend>
-              <label ><input type="radio" name="groupe">
+              <label ><input type="radio" name="groupe" ngModel="{{info.idgroupe}}" required>
                 <b>Horaire(s) : </b>{{info.horaires[0].libellehoraire}}<br>
-                <b>Entraîneurs(s) : </b><p *ngFor="let groupe of info.personne">{{groupe.nomPersonne}}</p><br>
+                <b>Entraîneurs(s) : </b><p *ngFor="let groupe of info.personne">{{groupe.nomPersonne}} {{groupe.prenomPersonne}}</p><br>
                 <b>Tarifs : </b>{{info.tarif_Groupe}} €
               </label>
         </fieldset>

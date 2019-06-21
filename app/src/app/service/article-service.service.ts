@@ -18,6 +18,10 @@ export class ArticleServiceService {
     return this.http.get<Article[]>(this.urlArticle);
   }
 
+  public findAllById(id): Observable<Article[]> {
+    return this.http.get<Article[]>('http://localhost:8080/articles/id?id=' + id);
+  }
+
   public save(article: Article){
     return this.http.post<Article>(this.urlArticle, article);
   }

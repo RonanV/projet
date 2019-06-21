@@ -51,13 +51,17 @@ label{
   margin-bottom: 1%;
 }
 
-input, select{
+input, select, textarea{
   display:block;
   float:right;
   margin-right:3%;
   width:50%;
   font-size:20px;
   font-family: "LGC", Arial, sans-serif;
+}
+
+textarea{
+  height:200px;
 }
 
 form{
@@ -127,11 +131,10 @@ h2{
   font-family: "LGC", Arial, sans-serif;
 }
 
-.groupe{
+.groupe, .article{
   display:block;
   float:left;
   width:45%;
-  height:300px;
   margin:2%;
   border: 1px solid gray;
   border-radius: 5px;
@@ -145,4 +148,33 @@ h2{
   width:75%;
   position:relative;
   margin-left:12%;
+}
+
+.mod_groupe{
+  display:block;
+  float:left;
+}
+
+table{
+  width:95%;
+  margin-left:2.5%;
+  border-collapse: collapse;
+  margin-bottom:2%;
+}
+
+th{
+  background-color: #BCBCBC;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+button{
+  font-size: 20px;
+  color: red;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 4%;
 }
