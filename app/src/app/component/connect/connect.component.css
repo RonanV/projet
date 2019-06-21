@@ -6,6 +6,7 @@ div.contenu {
   display:block;
   float:left;
   width:80%;
+  padding-bottom: 20px;
 }
 
 .button{
@@ -36,7 +37,7 @@ div.contenu {
 .detail{
   display:block;
   float:left;
-  width:95%;
+  width:calc(95% - 2px);
   margin-left:2.5%;
   border : 1px solid grey;
 }

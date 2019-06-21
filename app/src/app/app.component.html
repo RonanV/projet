@@ -7,13 +7,12 @@
   <li class="mainnav"><a routerLink="/calendrier" class="mainnav"><p>Calendrier</p></a></li>
   <li class="mainnav"><a routerLink="/album" class="mainnav"><p>Album</p></a></li>
   <li class="mainnav"><a routerLink="/contact" class="mainnav"><p>Contact</p></a></li>
-  <li *ngIf="login !== 'Se connecter'" class="mainnav3"><a class="disconnect" (click)="disconnect()" *ngIf="login !== 'Se connecter'">Se déconnecter</a><a routerLink="/connect" class="mainnav2" (click)="display();"><p>{{ login }}</p></a></li>
+  <li *ngIf="login !== 'Se connecter'" class="mainnav2"><a class="disconnect" (click)="disconnect()">Se déconnecter</a><a routerLink="/connect" class="mainnav3" (click)="display();">{{ login }}</a></li>
   <li *ngIf="login === 'Se connecter'" class="mainnav2"><a class="mainnav2" (click)="display();"><p>{{ login }}</p></a></li>
 </ul>
 </header>
 <div class="contenu" name="contenu">
   
-</div>
 <!-- -----------LOGIN PART------------------>
 <!-- The Modal -->
 <div id="id01" class="modal">
@@ -49,6 +48,8 @@ class="close" title="Close Modal">&times;</span>
 
 
 <router-outlet></router-outlet>
+</div>
 
 <footer><br>
-    ETOILE DE VILLECRESNES</footer>
+    ETOILE DE VILLECRESNES
+</footer>

@@ -69,7 +69,7 @@
             <legend>{{info.libellegrp}}</legend>
               <label ><input type="radio" name="groupe">
                 <b>Horaire(s) : </b>{{info.horaires[0].libellehoraire}}<br>
-                <b>Entraîneurs(s) : </b><p></p><br>
+                <b>Entraîneurs(s) : </b><p *ngFor="let groupe of info.personne">{{groupe.nomPersonne}}</p><br>
                 <b>Tarifs : </b>{{info.tarif_Groupe}} €
               </label>
         </fieldset>
