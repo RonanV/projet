@@ -10,6 +10,4 @@ public class ApiSpring {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiSpring.class, args);
 	}
-	
-	
 }

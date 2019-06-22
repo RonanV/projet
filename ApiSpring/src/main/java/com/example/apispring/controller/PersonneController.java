@@ -1,7 +1,9 @@
 package com.example.apispring.controller;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -118,9 +122,9 @@ public class PersonneController extends MainController{
 		return encodepassword;
 	}
 
-	@GetMapping(path="/add2")
+	@PostMapping(path="/add2")
 	public String addnewmembre(@RequestParam String nom_Personne, @RequestParam String prenom_Personne, 
-			@RequestParam String email_Personne, @RequestParam String telephone,
+			@RequestParam String email_Personne, @RequestParam String telephone, @RequestParam Date datenaissance_Personne,
 			@RequestParam String rue_Personne, @RequestParam String codepostal_Personne, @RequestParam String ville_Personne,
 			@RequestParam String telephonepere_Personne, @RequestParam String telephonemere_Personne, @RequestParam String numlicence) {
 		
@@ -131,12 +135,26 @@ public class PersonneController extends MainController{
 		p.setTelephone(telephone);
 		p.setRue_Personne(rue_Personne);
 		p.setCodepostal_Personne(codepostal_Personne);
+		p.setDatenaissance_Personne(datenaissance_Personne);
 		p.setVille_Personne(ville_Personne);
 		p.setTelephonemere(telephonemere_Personne);
 		p.setTelephonepere(telephonepere_Personne);
 		p.setNumlicence(numlicence);
 		
 		super.getPersonneRepository().save(p);
+		return "Saved";
+	}
+	@PutMapping(path="/update")
+	public String updateadherents(@RequestParam int id, @RequestParam String nom_Personne, @RequestParam String prenom_Personne,
+			@RequestParam Date datenaissance_Personne, @RequestParam String email_Personne, @RequestParam String numlicence)
+	{
+		Personne p = super.getPersonneRepository().findById(id);
+		p.setNomPersonne(nom_Personne);
+		p.setPrenomPersonne(prenom_Personne);
+		p.setDatenaissance_Personne(datenaissance_Personne);
+		p.setEmailPersonne(email_Personne);
+		p.setNumlicence(numlicence);
+		
 		return "Saved";
 	}
 }
