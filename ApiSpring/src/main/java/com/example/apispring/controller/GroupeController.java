@@ -34,7 +34,7 @@ public class GroupeController extends MainController{
 	public String ajoutgroupe(@RequestParam String libellegrp, @RequestParam String limitemax, @RequestParam String annee_Min, @RequestParam String annee_Max, @RequestParam int identraineur ) {
 		Groupe g = new Groupe();
 		PersonneRepository personnerepository = super.getPersonneRepository();
-		Set<Personne> entraineur = personnerepository.findByIdPersonne(identraineur);
+		Set<Personne> entraineur = personnerepository.findByIdpersonne(identraineur);
 		g.setLibellegrp(libellegrp);
 		g.setPersonne(entraineur);
 		g.setLimitemax(limitemax);

@@ -10,10 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.apispring.controller.MainController;
+import com.example.apispring.filter.JWTAuthenticationFilter;
+import com.example.apispring.filter.JWTAuthorizationFilter;
 import com.example.apispring.redirection.SuccessHandlerRedirection;
 import com.example.apispring.service.CustomUserDetailsService;
 
@@ -24,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
-	
+		
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 			auth
@@ -34,19 +37,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/personnes").permitAll()
-		.and()
-			.formLogin()
+		http.authorizeRequests().antMatchers("/personnes/add", "/authenticate", "/register").permitAll()
+		//.and()
+			//.formLogin()
 				//.successHandler(new SuccessHandlerRedirection())
 		.and()
 			.logout()
 		.and()
 			.authorizeRequests().anyRequest().authenticated()
+		/*.and()
+			.httpBasic()*/
 		.and()
-			.httpBasic()
+			.cors()
 		.and()
-			.cors();
-		
+			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+            .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+            // this disables session creation on Spring Security
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+         .and()
+         	.csrf().disable();
 	}
 	
 	private PasswordEncoder getPasswordEncoder() {
