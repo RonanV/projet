@@ -13,7 +13,7 @@ import com.example.apispring.repository.PersonneRepository;
 import com.example.apispring.repository.TacheRepository;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path= "/taches")
 public class TacheController {
 

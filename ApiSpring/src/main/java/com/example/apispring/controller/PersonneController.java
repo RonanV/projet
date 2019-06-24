@@ -29,14 +29,13 @@ import com.example.apispring.repository.PersonneRepository;
 import com.example.apispring.repository.TacheRepository;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path= "/personnes")
 public class PersonneController extends MainController{
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@GetMapping(path="")
-	@PreAuthorize("hasRole('USER')")
 	public Iterable<Personne> getAllUsers() {
 		return super.getPersonneRepository().findAll();
 	}

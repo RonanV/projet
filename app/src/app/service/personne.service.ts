@@ -13,7 +13,7 @@ export class PersonneService {
 
   constructor(private http: HttpClient) { 
     this.urlPersonne = 'https://localhost:8080/personnes/all'
-    this.urlPersonne2 = 'https://localhost:8080/personnes/verif?numero='
+    this.urlPersonne2 = 'https://localhost:3401/personnes/verif?numero='
   }
 
   public findAll(): Observable<Personne[]> {

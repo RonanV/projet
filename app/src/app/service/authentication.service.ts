@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Personne } from '../models/personne';
@@ -24,9 +24,17 @@ export class AuthenticationService {
   }
 
   login(username: String, password: String) {
-     this.p.push({ numero: username, pass:password });
-      return this.http.post<any>(`http://localhost:8080/personnes/verif`, this.p)
+      this.p = [];
+     this.p.push({ numlicence: username, password:password });
+     console.log('p',this.p[0])
+     return this.http.post(`http://localhost:3401/login`, JSON.stringify(this.p[0]))
+            .pipe(map((response : HttpResponse<any>) => {
+                console.log('response', response)
+                return response;
+            }));
+     /*  return this.http.post<any>(`http://localhost:3401/login`, this.p[0])
           .pipe(map(user => {
+              console.log('test2')
               // login successful if there's a jwt token in the response
               if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -35,7 +43,7 @@ export class AuthenticationService {
               }
 
               return user;
-          }));
+          })); */
   }
 
   logout() {

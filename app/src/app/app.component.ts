@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchIdService } from 'src/app/service/search-id.service';
 import { PersonneService } from 'src/app/service/personne.service';
+import { AuthenticationService } from './service/authentication.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,7 @@ export class AppComponent implements OnInit {
   login: string = "Se connecter";
   
 
-  constructor( private router:Router, private personneService: PersonneService, private searchIdService: SearchIdService){
+  constructor( private router:Router, private personneService: PersonneService, private authentication : AuthenticationService, private searchIdService : SearchIdService){
     
   }
 
@@ -75,7 +77,16 @@ export class AppComponent implements OnInit {
       this.mdp = false;
       this.id=f.value.uname;
       this.psw=f.value.psw;
-      this.personneService.findAllPass(this.id, this.psw).subscribe(data =>{
+      console.log()
+      this.authentication.login(this.id, this.psw).subscribe(result  =>{
+          console.log('token',result);
+          this.verification = false;
+        }, erreur => {
+        this.verification = true;
+      });
+
+
+      /* this.personneService.findAllPass(this.id, this.psw).subscribe(data =>{
         this.verif = true;
         (document.getElementById('id01').style.display='none');
         this.router.navigateByUrl('/connect');
@@ -84,7 +95,7 @@ export class AppComponent implements OnInit {
         localStorage.setItem('idpersonne', data['idpersonne']);
       }, erreur => {
         this.verification = true;
-      });
+      }); */
     }
   }
 
