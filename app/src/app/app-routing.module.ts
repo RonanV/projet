@@ -7,6 +7,7 @@ import { CalendrierComponent } from './component/calendrier/calendrier.component
 import { DisciplineComponent } from './component/discipline/discipline.component';
 import { ConnectComponent } from './component/connect/connect.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
+import { RgpdComponent } from './component/rgpd/rgpd.component';
 
 const routes: Routes = [
   //{ path: 'club', component: ClubComponent }
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'calendrier', component: CalendrierComponent},
   { path: 'discipline', component: DisciplineComponent},
   { path: 'connect', component: ConnectComponent},
-  { path: 'inscription', component: InscriptionComponent}
+  { path: 'inscription', component: InscriptionComponent},
+  { path: 'rgpd', component: RgpdComponent}
 ];
 
 @NgModule({

@@ -143,9 +143,10 @@
         <div>
                 <h2>Creer un nouvel article</h2>
             <form #myform="ngForm" (ngSubmit)="register_create_article(myform)">
-                <label>Date<input type="date" name="date" ngModel/></label>
-                <label>Titre<input type="text" name="titre" ngModel/></label>
-                <label>Text<br><i>Consignes pour l'écriture d'articles<br>Gras : &lt;b&gt;TEXT&lt;/b&gt;<br>Retour à la ligne : &lt;br&gt;</i><textarea type="text" name="text" ngModel></textarea></label>
+                <label>Date<input type="date" name="date_article" ngModel/></label>
+                <label>Titre<input type="text" name="titre_article" ngModel/></label>
+                <label>Text<br><i>Consignes pour l'écriture d'articles<br>Gras : &lt;b&gt;TEXT&lt;/b&gt;<br>Retour à la ligne : &lt;br&gt;</i><textarea type="text" name="texte_article" ngModel></textarea></label>
+                <label><input type="hidden" name="id_personne" ngModel="localStorage.getItem('idpersonne')"/></label>
                 <label><input type="submit" value="Creer l'article"/></label>
             </form>
         </div>

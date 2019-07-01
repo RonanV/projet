@@ -18,11 +18,25 @@ export class ArticleServiceService {
     return this.http.get<Article[]>(this.urlArticle);
   }
 
+  public auth(){
+    this.http.get<any>('url', {observe: 'response'})
+       .subscribe(resp => {
+    console.log(resp.headers.get('X-Token'));
+  });
+  }
+
   public findAllById(id): Observable<Article[]> {
     return this.http.get<Article[]>('http://localhost:8080/articles/id?id=' + id);
   }
 
-  public save(article: Article){
-    return this.http.post<Article>(this.urlArticle, article);
+  public save(article : Article){
+    console.log("article", article)
+    if(this.http.post('http://localhost:8080/articles/add', article)){
+      console.log("true")
+      return true;
+    }else{
+      console.log("false");
+      return false;
+    }
   }
 }

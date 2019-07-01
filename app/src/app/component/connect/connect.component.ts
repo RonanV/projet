@@ -6,6 +6,7 @@ import { SearchIdService } from '../../service/search-id.service'
 import { GroupeService } from '../../service/groupe.service'
 import { ArticleServiceService } from '../../service/article-service.service' 
 import { NgForm } from '@angular/forms';
+import { Article } from 'src/app/models/article';
 
 
 @Component({
@@ -37,8 +38,10 @@ export class ConnectComponent implements OnInit{
   E_Z:String = "";
   J_G:String = "";
   J_T:String = "";
-
-
+ 
+ 
+ 
+  creat_art = [];
   tache = [];
   info = [];
   inforesult = [];
@@ -49,6 +52,7 @@ export class ConnectComponent implements OnInit{
   info_article_id = [];
   info_article_modif = [];
   articles: any;
+
 
   constructor(private app:AppComponent, 
     private router:Router, 
@@ -264,7 +268,16 @@ export class ConnectComponent implements OnInit{
   }
 
   register_create_article(f: NgForm){
-    console.log('create_article',f.value);
+    console.log('create_article',f.value.titre_article);
+    this.creat_art = [];
+    this.creat_art.push({
+      titre_article : f.value.titre_article,
+      date_article : f.value.date_article,
+      texte_article : f.value.texte_article,
+      id_personne : +localStorage.getItem('idpersonne')
+    })
+    console.log('art', this.creat_art[0])
+    this.ArticleService.save(this.creat_art[0]);
   }
 
   register_update_article(f: NgForm){

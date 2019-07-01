@@ -13,6 +13,7 @@ import { DisciplineComponent } from './component/discipline/discipline.component
 import { ConnectComponent } from './component/connect/connect.component';
 import { FormsModule } from '@angular/forms';
 import { InscriptionComponent } from './component/inscription/inscription.component';
+import { RgpdComponent } from './component/rgpd/rgpd.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
     CalendrierComponent,
     DisciplineComponent,
     ConnectComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    RgpdComponent
   ],
   imports: [
     BrowserModule,

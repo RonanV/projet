@@ -13,4 +13,6 @@ public interface PersonneRepository extends CrudRepository<Personne, Integer>{
 	Personne findByNumlicence(String numlicence);
 	List<Personne> findByNomPersonneContainingOrPrenomPersonneContainingOrEmailPersonneContaining(String nomPersonne,
 			String prenomPersonne, String emailPersonne);
+
+	Personne findById(int id);
 }
